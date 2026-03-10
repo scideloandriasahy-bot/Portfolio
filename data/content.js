@@ -1,11 +1,11 @@
 export const portfolioData = {
     identity: {
-        name: "Joseph Richardson",
+        name: "ANDRIASAHY Tsikomia Scidelo",
         title: "Étudiant en deuxième année de cycle d'ingénieur",
         institution: "Université Abdelmalek Essaâdi",
         specialties: ["Électronique", "Automatique", "Robotique", "Systèmes Embarqués"],
         contacts: {
-            email: "joseph.richardson@etu.uae.ac.ma",
+            email: "andriasahy.tsikomiascidelo@etu.uae.ac.ma ",
             linkedin: "https://linkedin.com/in/joseph-richardson",
             superprof: "https://www.superprof.fr/votre-profil",
             phone: "+212 6 XX XX XX XX"
