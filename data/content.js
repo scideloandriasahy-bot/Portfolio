@@ -2,13 +2,13 @@ export const portfolioData = {
     identity: {
         name: "ANDRIASAHY Tsikomia Scidelo",
         title: "Étudiant en deuxième année de cycle d'ingénieur",
-        institution: "Université Abdelmalek Essaâdi",
+        institution: "Ecole Normale des Sciences Appliquées de TANGER - ENSAT - Université Abdelmalek Essaâdi",
         specialties: ["Électronique", "Automatique", "Robotique", "Systèmes Embarqués"],
         contacts: {
-            email: "andriasahy.tsikomiascidelo@etu.uae.ac.ma ",
-            linkedin: "https://linkedin.com/in/joseph-richardson",
-            superprof: "https://www.superprof.fr/votre-profil",
-            phone: "+212 6 XX XX XX XX"
+            email: "scideloandriasahy@gmail.com",
+            linkedin: "www.linkedin.com/in/scidelo",
+            superprof: "https://www.superprof.ma/Scidelo",
+            phone: "+212 6 77 64 73 62"
         },
         image: "assets/images/profile.jpg"
     },

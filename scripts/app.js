@@ -3,6 +3,7 @@ import { portfolioData } from '../data/content.js';
 document.addEventListener('DOMContentLoaded', () => {
     initTheme();
     renderContent();
+    setupFilters();
     setupAnimations();
 });
 
@@ -22,13 +23,19 @@ function initTheme() {
 
     const reflectPreference = () => {
         document.documentElement.setAttribute('data-theme', theme);
-        themeToggle?.setAttribute('aria-label', theme);
+        const icon = theme === 'light' 
+            ? '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>'
+            : '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>';
+        if (themeToggle) {
+            themeToggle.innerHTML = icon;
+            themeToggle.setAttribute('aria-label', theme);
+        }
     };
 
     let theme = getColorPreference();
     reflectPreference();
 
-    themeToggle.addEventListener('click', () => {
+    themeToggle?.addEventListener('click', () => {
         theme = theme === 'light' ? 'dark' : 'light';
         setPreference();
     });
@@ -37,72 +44,118 @@ function initTheme() {
 function renderContent() {
     // Hero
     const heroContent = document.getElementById('hero-content');
-    heroContent.innerHTML = `
-        <h1>${portfolioData.identity.name}</h1>
-        <p class="tagline">${portfolioData.identity.title}</p>
-        <p style="color: var(--text-muted)">${portfolioData.identity.institution}</p>
-        <div class="specialties">
-            ${portfolioData.identity.specialties.map(s => `<span class="badge">${s}</span>`).join('')}
-        </div>
-        <div style="margin-top: 2rem; display: flex; gap: 1rem; flex-wrap: wrap;">
-            <a href="mailto:${portfolioData.identity.contacts.email}" class="tag">Email</a>
-            <a href="${portfolioData.identity.contacts.linkedin}" class="tag" target="_blank">LinkedIn</a>
-            <a href="${portfolioData.identity.contacts.superprof}" class="tag" target="_blank">Superprof</a>
-        </div>
-    `;
+    if (heroContent) {
+        heroContent.innerHTML = `
+            <div class="fade-in">
+                <h1>${portfolioData.identity.name}</h1>
+                <p class="tagline">${portfolioData.identity.title}</p>
+                <p style="color: var(--text-muted); font-size: 1.1rem;">${portfolioData.identity.institution}</p>
+                <div class="specialties">
+                    ${portfolioData.identity.specialties.map(s => `<span class="badge">${s}</span>`).join('')}
+                </div>
+                <div style="margin-top: 2.5rem; display: flex; gap: 1.25rem; flex-wrap: wrap;">
+                    <a href="mailto:${portfolioData.identity.contacts.email}" class="btn">Me contacter</a>
+                    <a href="${portfolioData.identity.contacts.linkedin}" class="btn" style="background: var(--text-color); color: var(--bg-color)" target="_blank">LinkedIn</a>
+                </div>
+            </div>
+        `;
+    }
 
     // About
-    document.getElementById('about-text').innerHTML = `<p style="font-size: 1.1rem; max-width: 800px;">${portfolioData.about.text}</p>`;
+    const aboutText = document.getElementById('about-text');
+    if (aboutText) {
+        aboutText.innerHTML = `<p style="font-size: 1.2rem; max-width: 850px; color: var(--text-muted)">${portfolioData.about.text}</p>`;
+    }
 
-    // Projects
-    const projectsGrid = document.getElementById('projects-grid');
-    projectsGrid.innerHTML = portfolioData.projects.map(p => `
-        <div class="card" onclick="openProject(${p.id})">
-            <div style="height: 200px; background: #222; overflow: hidden;">
-                <img src="${p.image}" alt="${p.title}" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.8;" onerror="this.src='https://placehold.co/600x400/222/fff?text=${p.category}'">
-            </div>
-            <div class="card-content">
-                <div class="card-tags">
-                   ${p.tags.slice(0, 3).map(t => `<span class="tag">${t}</span>`).join('')}
-                </div>
-                <h3 class="card-title">${p.title}</h3>
-                <p style="font-size: 0.9rem; color: var(--text-muted);">${p.description}</p>
-            </div>
-        </div>
-    `).join('');
+    // Initial Projects Render
+    filterProjects('all');
 
     // Experience
     const experienceTimeline = document.getElementById('experience-timeline');
-    experienceTimeline.innerHTML = portfolioData.experience.map(e => `
-        <div class="timeline-item">
-            <div class="timeline-date">${e.period}</div>
-            <h3>${e.role}</h3>
-            <p style="color: var(--accent-color); font-weight: 500;">${e.organization}</p>
-            <p style="margin-top: 0.5rem; color: var(--text-muted);">${e.description}</p>
-        </div>
-    `).join('');
+    if (experienceTimeline) {
+        experienceTimeline.innerHTML = portfolioData.experience.map(e => `
+            <div class="timeline-item fade-in">
+                <div class="timeline-date">${e.period}</div>
+                <h3>${e.role}</h3>
+                <p style="color: var(--accent-color); font-weight: 600; font-size: 1.1rem;">${e.organization}</p>
+                <p style="margin-top: 0.75rem; color: var(--text-muted);">${e.description}</p>
+            </div>
+        `).join('');
+    }
 
     // Education
     const educationTimeline = document.getElementById('education-timeline');
-    educationTimeline.innerHTML = portfolioData.education.map(e => `
-        <div class="timeline-item">
-            <div class="timeline-date">${e.period}</div>
-            <h3>${e.degree}</h3>
-            <p style="color: var(--accent-color); font-weight: 500;">${e.institution}</p>
-            <p style="margin-top: 0.5rem; color: var(--text-muted);">${e.details}</p>
-        </div>
-    `).join('');
+    if (educationTimeline) {
+        educationTimeline.innerHTML = portfolioData.education.map(e => `
+            <div class="timeline-item fade-in">
+                <div class="timeline-date">${e.period}</div>
+                <h3>${e.degree}</h3>
+                <p style="color: var(--accent-color); font-weight: 600; font-size: 1.1rem;">${e.institution}</p>
+                <p style="margin-top: 0.75rem; color: var(--text-muted);">${e.details}</p>
+            </div>
+        `).join('');
+    }
 
     // Certificates
     const certificatesGrid = document.getElementById('certificates-grid');
-    certificatesGrid.innerHTML = portfolioData.certificates.map(c => `
-        <div class="card">
-            <div style="height: 150px; background: #eee; display:flex; align-items:center; justify-content:center;">
-                <img src="${c.image}" alt="${c.title}" style="max-width: 100%; max-height: 100%;" onerror="this.src='https://placehold.co/300x200/eee/999?text=Certification'">
+    if (certificatesGrid) {
+        certificatesGrid.innerHTML = portfolioData.certificates.map(c => `
+            <div class="card fade-in">
+                <div style="height: 180px; background: #f9fafb; display:flex; align-items:center; justify-content:center; padding: 1.5rem;">
+                    <img src="${c.image}" alt="${c.title}" style="max-width: 100%; max-height: 100%; filter: grayscale(0.2);" onerror="this.src='https://placehold.co/400x300/eef2ff/6366f1?text=${c.title}'">
+                </div>
+                <div class="card-content">
+                    <h4 class="card-title">${c.title}</h4>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); font-weight: 500;">${c.issuer} • ${c.date}</p>
+                </div>
+            </div>
+        `).join('');
+    }
+}
+
+function setupFilters() {
+    const filterBar = document.getElementById('category-filters');
+    if (!filterBar) return;
+
+    const categories = ['all', ...new Set(portfolioData.projects.map(p => p.category.toLowerCase()))];
+    
+    filterBar.innerHTML = categories.map(cat => `
+        <button class="filter-btn ${cat === 'all' ? 'active' : ''}" data-category="${cat}">
+            ${cat === 'all' ? 'Tous' : cat.charAt(0).toUpperCase() + cat.slice(1)}
+        </button>
+    `).join('');
+
+    filterBar.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            filterBar.querySelector('.active').classList.remove('active');
+            btn.classList.add('active');
+            filterProjects(btn.dataset.category);
+        });
+    });
+}
+
+function filterProjects(category) {
+    const projectsGrid = document.getElementById('projects-grid');
+    if (!projectsGrid) return;
+
+    const filtered = category === 'all' 
+        ? portfolioData.projects 
+        : portfolioData.projects.filter(p => p.category.toLowerCase() === category);
+
+    projectsGrid.innerHTML = filtered.map(p => `
+        <div class="card fade-in visible" onclick="openProject(${p.id})">
+            <div style="height: 220px; background: #000; overflow: hidden; position: relative;">
+                <img src="${p.image}" alt="${p.title}" style="width: 100%; height: 100%; object-fit: cover; opacity: 0.7; transition: var(--transition);" onerror="this.src='https://placehold.co/600x400/111/fff?text=${p.title}'">
+                <div style="position: absolute; bottom: 1rem; left: 1rem;">
+                    <span class="badge" style="background: rgba(255,255,255,0.1); backdrop-filter: blur(4px); color: white; border: none;">${p.category}</span>
+                </div>
             </div>
             <div class="card-content">
-                <h4 class="card-title">${c.title}</h4>
-                <p style="font-size: 0.8rem; color: var(--text-muted);">${c.issuer} • ${c.date}</p>
+                <h3 class="card-title">${p.title}</h3>
+                <p style="font-size: 0.95rem; color: var(--text-muted); margin-bottom: 1.5rem;">${p.description}</p>
+                <div class="card-tags" style="display: flex; gap: 0.5rem; flex-wrap: wrap;">
+                   ${p.tags.slice(0, 3).map(t => `<span class="tag">#${t}</span>`).join('')}
+                </div>
             </div>
         </div>
     `).join('');
@@ -110,7 +163,8 @@ function renderContent() {
 
 function setupAnimations() {
     const observerOptions = {
-        threshold: 0.1
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
     };
 
     const observer = new IntersectionObserver((entries) => {
@@ -133,20 +187,22 @@ window.openProject = (id) => {
     const modalBody = document.getElementById('modal-body');
 
     modalBody.innerHTML = `
-        <span class="tag" style="margin-bottom: 1rem; display: block;">${p.category}</span>
-        <h1 style="font-size: 2.5rem; margin-bottom: 1rem;">${p.title}</h1>
-        <div class="card-tags" style="margin-bottom: 2rem;">
-            ${p.tags.map(t => `<span class="badge">${t}</span>`).join('')}
-        </div>
-        <div style="margin-bottom: 2rem; border-radius: 12px; overflow: hidden;">
-            <img src="${p.image}" style="width: 100%; max-height: 500px; object-fit: cover;" onerror="this.src='https://placehold.co/1200x600/222/fff?text=${p.title}'">
-        </div>
-        <div class="project-details-content">
-            ${formatMarkdown(p.details)}
-        </div>
-        <div style="margin-top: 3rem; display: flex; gap: 1rem;">
-             ${p.links.github ? `<a href="${p.links.github}" class="btn">Code Source</a>` : ''}
-             ${p.links.report ? `<a href="${p.links.report}" class="btn" style="background: var(--text-color)">Rapport Technique</a>` : ''}
+        <div class="fade-in visible">
+            <span class="tag" style="margin-bottom: 1rem; display: block;">${p.category}</span>
+            <h1 style="font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 1.5rem;">${p.title}</h1>
+            <div class="card-tags" style="margin-bottom: 2.5rem; display: flex; gap: 0.75rem; flex-wrap: wrap;">
+                ${p.tags.map(t => `<span class="badge">${t}</span>`).join('')}
+            </div>
+            <div style="margin-bottom: 2.5rem; border-radius: 24px; overflow: hidden; background: #000; box-shadow: 0 20px 40px rgba(0,0,0,0.2);">
+                <img src="${p.image}" style="width: 100%; max-height: 600px; object-fit: cover;" onerror="this.src='https://placehold.co/1200x800/111/eee?text=${p.title}'">
+            </div>
+            <div class="project-details-content" style="font-size: 1.1rem; line-height: 1.8;">
+                ${formatMarkdown(p.details)}
+            </div>
+            <div style="margin-top: 4rem; display: flex; gap: 1.5rem; flex-wrap: wrap;">
+                 ${p.links.github ? `<a href="${p.links.github}" class="btn" target="_blank">Voir sur GitHub</a>` : ''}
+                 ${p.links.report ? `<a href="${p.links.report}" class="btn" style="background: var(--text-color); color: var(--bg-color)" target="_blank">Consulter le rapport</a>` : ''}
+            </div>
         </div>
     `;
 
@@ -163,8 +219,8 @@ document.getElementById('close-modal').onclick = () => {
 function formatMarkdown(text) {
     if (!text) return '';
     return text
-        .replace(/### (.*)/g, '<h3 style="margin: 2rem 0 1rem">$1</h3>')
-        .replace(/\n- (.*)/g, '<li style="margin-left: 1.5rem">$1</li>')
-        .replace(/```(\w+)\n([\s\S]*?)```/g, '<pre style="background: #222; color: #fff; padding: 1.5rem; border-radius: 8px; overflow-x: auto; margin: 1.5rem 0; font-family: monospace;"><code>$2</code></pre>')
+        .replace(/### (.*)/g, '<h3 style="margin: 3rem 0 1.5rem; font-size: 1.8rem;">$1</h3>')
+        .replace(/\n- (.*)/g, '<li style="margin-left: 1.5rem; margin-bottom: 0.5rem">$1</li>')
+        .replace(/```(\w+)\n([\s\S]*?)```/g, '<pre style="background: #111; color: #a5f3fc; padding: 2rem; border-radius: 16px; overflow-x: auto; margin: 2rem 0; font-family: \'Fira Code\', monospace; font-size: 0.95rem; border: 1px solid #334155;"><code>$2</code></pre>')
         .replace(/\n\n/g, '<br><br>');
 }
