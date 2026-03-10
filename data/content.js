@@ -139,28 +139,35 @@ Ce projet a été réalisé dans le cadre du module "Conception de Systèmes Él
                 },
                 {
                     id: 3,
-                    title: "Implémentation PSO en VHDL",
-                    category: "FPGA",
-                    tags: ["VHDL", "Digital Design", "PSO"],
-                    description: "Accélération matérielle de l'algorithme d'Optimisation par Essaim de Particules (PSO) sur FPGA pour des applications de traitement du signal en temps réel.",
-                    image: "assets/images/project3.jpg",
+                    title: "Horloge H24 & Thermomètre Numérique Optimisés",
+                    category: "Systèmes Embarqués",
+                    tags: ["PIC16F877A", "MikroC", "Proteus", "C", "ADC", "Capteur LM35", "Optimisation"],
+                    description: "Développement multitâche sur PIC16F877A avec optimisation algorithmique de la mémoire Flash et RAM.",
+                    image: "assets/images/imagePH2.png",
                     links: {
-                        github: "#"
+                        report: "assets/pdfs/RAPPORT_H24_THERMO.pdf"
                     },
                     details: `
-                        ### Architecture
-                        Développement d'une architecture parallèle permettant de mettre à jour les positions des particules à chaque cycle d'horloge.
-                        
-                        ### Caractéristiques
-                        - Virgule fixe pour la gestion des données.
-                        - Pipelinage profond pour maximiser la fréquence de fonctionnement.
-                        
-                        \`\`\`vhdl
-                        -- Exemple de mise à jour de vitesse
-                        velocity_next <= std_logic_vector(signed(velocity) + 
-                                         signed(c1 * r1 * (pbest - current_pos)) +
-                                         signed(c2 * r2 * (gbest - current_pos)));
-                        \`\`\`
+### Résumé du Projet
+Ce projet consiste en la conception et la programmation d'un système embarqué multitâche sur un microcontrôleur PIC16F877A. Le système combine une horloge 24 heures et un thermomètre numérique (via un capteur LM35), affichant les données en temps réel sur un écran LCD. L'implémentation a été codée en C sous MikroC et validée par simulation sous Proteus.
+
+### Architecture Matérielle
+- **Capteur de température LM35** : Interfaçage avec le convertisseur analogique-numérique (ADC) du PIC.
+- **Afficheur LCD** : Piloté en mode 4 bits pour économiser les broches d'entrées/sorties du microcontrôleur.
+
+### Approche Logicielle : L'enjeu de l'optimisation
+C'est le cœur du projet. Comparaison entre deux méthodes de développement :
+- **L'approche standard** : Utilisation des bibliothèques de conversion par défaut de MikroC, fonctionnelles mais gourmandes en ressources.
+- **L'approche optimisée (retenue)** : Développement d'un formatage manuel des données (sans utiliser les bibliothèques lourdes). Cette rigueur algorithmique a permis d'optimiser drastiquement l'utilisation de la mémoire Flash et de la RAM du microcontrôleur, tout en respectant les contraintes strictes du temps réel pour l'horloge et la lecture ADC.
+
+### Galerie du Projet
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; margin: 2rem 0;">
+    <img src="assets/images/Image1.png" alt="Vue Globale" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+    <img src="assets/images/Image2.png" alt="Simulation 1" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+    <img src="assets/images/Image3.png" alt="Simulation 2" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+    <img src="assets/images/Image4.png" alt="Détails LCD" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+    <img src="assets/images/Image5.png" alt="Optimisation" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+</div>
                     `
                 }
             ]
@@ -343,17 +350,35 @@ This project was carried out as part of the "Electronic Systems Design" module. 
                 },
                 {
                     id: 3,
-                    title: "PSO Implementation in VHDL",
-                    category: "FPGA",
-                    tags: ["VHDL", "Digital Design", "PSO"],
-                    description: "Hardware acceleration of the Particle Swarm Optimization (PSO) algorithm on FPGA for real-time signal processing applications.",
-                    image: "assets/images/project3.jpg",
+                    title: "Optimized 24H Clock & Digital Thermometer",
+                    category: "Embedded Systems",
+                    tags: ["PIC16F877A", "MikroC", "Proteus", "C", "ADC", "LM35 Sensor", "Optimization"],
+                    description: "Multitask development on PIC16F877A with algorithmic optimization of Flash and RAM memory.",
+                    image: "assets/images/imagePH2.png",
                     links: {
-                        github: "#"
+                        report: "assets/pdfs/RAPPORT_H24_THERMO.pdf"
                     },
                     details: `
-                        ### Architecture
-                        Development of a parallel architecture allowing particle positions to be updated at each clock cycle.
+### Project Abstract
+This project involves the design and programming of a multitask embedded system on a PIC16F877A microcontroller. The system combines a 24-hour clock and a digital thermometer (via LM35 sensor), displaying real-time data on an LCD screen. Implementation was coded in C under MikroC and validated via Proteus simulation.
+
+### Hardware Architecture
+- **LM35 Temperature Sensor**: Interfaciong with the PIC's Analog-to-Digital Converter (ADC).
+- **LCD Display**: Driven in 4-bit mode to save microcontroller I/O pins.
+
+### Software Approach: The Optimization Challenge
+This is the core of the project. A comparison between two development methods:
+- **Standard Approach**: Using default MikroC conversion libraries, functional but resource-heavy.
+- **Optimized Approach (adopted)**: Development of manual data formatting (without heavy libraries). This algorithmic rigor drastically optimized Flash and RAM usage, while respecting strict real-time constraints for the clock and ADC reading.
+
+### Project Gallery
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; margin: 2rem 0;">
+    <img src="assets/images/Image1.png" alt="Global View" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+    <img src="assets/images/Image2.png" alt="Simulation 1" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+    <img src="assets/images/Image3.png" alt="Simulation 2" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+    <img src="assets/images/Image4.png" alt="LCD Details" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+    <img src="assets/images/Image5.png" alt="Optimization" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+</div>
                     `
                 }
             ]
