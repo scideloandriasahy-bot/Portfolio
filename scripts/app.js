@@ -290,7 +290,41 @@ function formatMarkdown(text) {
     if (!text) return '';
     return text
         .replace(/### (.*)/g, '<h3 style="margin: 3rem 0 1.5rem; font-size: 1.8rem;">$1</h3>')
+        .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
         .replace(/\n- (.*)/g, '<li style="margin-left: 1.5rem; margin-bottom: 0.5rem">$1</li>')
         .replace(/```(\w+)\n([\s\S]*?)```/g, '<pre style="background: #111; color: #a5f3fc; padding: 2rem; border-radius: 16px; overflow-x: auto; margin: 2rem 0; font-family: \'Fira Code\', monospace; font-size: 0.95rem; border: 1px solid #334155;"><code>$2</code></pre>')
         .replace(/\n\n/g, '<br><br>');
+}
+
+// Lightbox logic
+document.addEventListener('click', (e) => {
+    if (e.target.tagName === 'IMG' && (e.target.closest('.project-details-content') || e.target.closest('.card'))) {
+        openLightbox(e.target.src);
+    }
+});
+
+function openLightbox(src) {
+    const lightbox = document.getElementById('lightbox');
+    const img = document.getElementById('lightbox-img');
+    if (lightbox && img) {
+        img.src = src;
+        lightbox.style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+document.querySelector('.close-lightbox')?.addEventListener('click', () => {
+    closeLightbox();
+});
+
+document.getElementById('lightbox')?.addEventListener('click', (e) => {
+    if (e.target.id === 'lightbox') closeLightbox();
+});
+
+function closeLightbox() {
+    const lightbox = document.getElementById('lightbox');
+    if (lightbox) {
+        lightbox.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
 }
