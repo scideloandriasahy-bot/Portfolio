@@ -95,6 +95,30 @@ nav {
     color: var(--accent-color);
 }
 
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.lang-toggle {
+    background: none;
+    border: 1px solid var(--border-color);
+    padding: 0.4rem 0.8rem;
+    border-radius: 10px;
+    cursor: pointer;
+    color: var(--text-color);
+    font-weight: 700;
+    font-size: 0.8rem;
+    transition: var(--transition);
+    height: 40px;
+}
+
+.lang-toggle:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
 .theme-toggle {
     background: var(--border-color);
     border: none;

@@ -1,7 +1,10 @@
 import { portfolioData } from '../data/content.js';
 
+let currentLang = 'fr';
+
 document.addEventListener('DOMContentLoaded', () => {
     initTheme();
+    initLanguage();
     renderContent();
     setupFilters();
     setupAnimations();
@@ -14,11 +17,6 @@ function initTheme() {
     const getColorPreference = () => {
         if (localStorage.getItem(storageKey)) return localStorage.getItem(storageKey);
         return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    };
-
-    const setPreference = () => {
-        localStorage.setItem(storageKey, theme);
-        reflectPreference();
     };
 
     const reflectPreference = () => {
@@ -37,25 +35,69 @@ function initTheme() {
 
     themeToggle?.addEventListener('click', () => {
         theme = theme === 'light' ? 'dark' : 'light';
-        setPreference();
+        localStorage.setItem(storageKey, theme);
+        reflectPreference();
     });
 }
 
+function initLanguage() {
+    const langToggle = document.getElementById('lang-toggle');
+    const storageKey = 'language-preference';
+    
+    currentLang = localStorage.getItem(storageKey) || 'fr';
+    updateLangUI();
+
+    langToggle?.addEventListener('click', () => {
+        currentLang = currentLang === 'fr' ? 'en' : 'fr';
+        localStorage.setItem(storageKey, currentLang);
+        updateLangUI();
+        renderContent();
+        setupFilters();
+    });
+}
+
+function updateLangUI() {
+    const langToggle = document.getElementById('lang-toggle');
+    if (langToggle) {
+        langToggle.textContent = currentLang === 'fr' ? 'EN' : 'FR';
+    }
+    document.documentElement.lang = currentLang;
+
+    // Update Nav
+    const data = portfolioData[currentLang].nav;
+    document.getElementById('nav-about').textContent = data.about;
+    document.getElementById('nav-cv').textContent = data.cv;
+    document.getElementById('nav-certificates').textContent = data.certificates;
+    document.getElementById('nav-projects').textContent = data.projects;
+    document.getElementById('nav-experience').textContent = data.experience;
+}
+
 function renderContent() {
+    const data = portfolioData[currentLang];
+
+    // Titles
+    document.querySelectorAll('.section-title').forEach(el => {
+        if (el.parentElement.id === 'about') el.textContent = data.about.title;
+        if (el.parentElement.id === 'projects') el.textContent = data.projects.title;
+        if (el.parentElement.id === 'experience') el.textContent = data.experience.title;
+        if (el.parentElement.id === 'cv') el.textContent = data.education.title;
+        if (el.parentElement.id === 'certificates') el.textContent = data.certificates.title;
+    });
+
     // Hero
     const heroContent = document.getElementById('hero-content');
     if (heroContent) {
         heroContent.innerHTML = `
-            <div class="fade-in">
-                <h1>${portfolioData.identity.name}</h1>
-                <p class="tagline">${portfolioData.identity.title}</p>
-                <p style="color: var(--text-muted); font-size: 1.1rem;">${portfolioData.identity.institution}</p>
+            <div class="fade-in visible">
+                <h1>${data.identity.name}</h1>
+                <p class="tagline">${data.identity.title}</p>
+                <p style="color: var(--text-muted); font-size: 1.1rem;">${data.identity.institution}</p>
                 <div class="specialties">
-                    ${portfolioData.identity.specialties.map(s => `<span class="badge">${s}</span>`).join('')}
+                    ${data.identity.specialties.map(s => `<span class="badge">${s}</span>`).join('')}
                 </div>
                 <div style="margin-top: 2.5rem; display: flex; gap: 1.25rem; flex-wrap: wrap;">
-                    <a href="mailto:${portfolioData.identity.contacts.email}" class="btn">Me contacter</a>
-                    <a href="${portfolioData.identity.contacts.linkedin}" class="btn" style="background: var(--text-color); color: var(--bg-color)" target="_blank">LinkedIn</a>
+                    <a href="mailto:${data.identity.contacts.email}" class="btn">${data.actions.contact}</a>
+                    <a href="https://${data.identity.contacts.linkedin}" class="btn" style="background: var(--text-color); color: var(--bg-color)" target="_blank">${data.actions.linkedin}</a>
                 </div>
             </div>
         `;
@@ -64,7 +106,7 @@ function renderContent() {
     // About
     const aboutText = document.getElementById('about-text');
     if (aboutText) {
-        aboutText.innerHTML = `<p style="font-size: 1.2rem; max-width: 850px; color: var(--text-muted)">${portfolioData.about.text}</p>`;
+        aboutText.innerHTML = `<p style="font-size: 1.2rem; max-width: 850px; color: var(--text-muted)">${data.about.text}</p>`;
     }
 
     // Initial Projects Render
@@ -73,8 +115,8 @@ function renderContent() {
     // Experience
     const experienceTimeline = document.getElementById('experience-timeline');
     if (experienceTimeline) {
-        experienceTimeline.innerHTML = portfolioData.experience.map(e => `
-            <div class="timeline-item fade-in">
+        experienceTimeline.innerHTML = data.experience.items.map(e => `
+            <div class="timeline-item fade-in visible">
                 <div class="timeline-date">${e.period}</div>
                 <h3>${e.role}</h3>
                 <p style="color: var(--accent-color); font-weight: 600; font-size: 1.1rem;">${e.organization}</p>
@@ -86,21 +128,25 @@ function renderContent() {
     // Education
     const educationTimeline = document.getElementById('education-timeline');
     if (educationTimeline) {
-        educationTimeline.innerHTML = portfolioData.education.map(e => `
-            <div class="timeline-item fade-in">
+        educationTimeline.innerHTML = data.education.items.map(e => `
+            <div class="timeline-item fade-in visible">
                 <div class="timeline-date">${e.period}</div>
                 <h3>${e.degree}</h3>
                 <p style="color: var(--accent-color); font-weight: 600; font-size: 1.1rem;">${e.institution}</p>
                 <p style="margin-top: 0.75rem; color: var(--text-muted);">${e.details}</p>
             </div>
         `).join('');
+        
+        // Update CV download button
+        const cvBtn = document.querySelector('#cv .btn');
+        if (cvBtn) cvBtn.textContent = data.education.downloadCV;
     }
 
     // Certificates
     const certificatesGrid = document.getElementById('certificates-grid');
     if (certificatesGrid) {
-        certificatesGrid.innerHTML = portfolioData.certificates.map(c => `
-            <div class="card fade-in">
+        certificatesGrid.innerHTML = data.certificates.items.map(c => `
+            <div class="card fade-in visible">
                 <div style="height: 180px; background: #f9fafb; display:flex; align-items:center; justify-content:center; padding: 1.5rem;">
                     <img src="${c.image}" alt="${c.title}" style="max-width: 100%; max-height: 100%; filter: grayscale(0.2);" onerror="this.src='https://placehold.co/400x300/eef2ff/6366f1?text=${c.title}'">
                 </div>
@@ -114,14 +160,15 @@ function renderContent() {
 }
 
 function setupFilters() {
+    const data = portfolioData[currentLang];
     const filterBar = document.getElementById('category-filters');
     if (!filterBar) return;
 
-    const categories = ['all', ...new Set(portfolioData.projects.map(p => p.category.toLowerCase()))];
+    const categories = ['all', ...new Set(data.projects.items.map(p => p.category.toLowerCase()))];
     
     filterBar.innerHTML = categories.map(cat => `
         <button class="filter-btn ${cat === 'all' ? 'active' : ''}" data-category="${cat}">
-            ${cat === 'all' ? 'Tous' : cat.charAt(0).toUpperCase() + cat.slice(1)}
+            ${cat === 'all' ? data.projects.filterAll : cat.charAt(0).toUpperCase() + cat.slice(1)}
         </button>
     `).join('');
 
@@ -135,12 +182,13 @@ function setupFilters() {
 }
 
 function filterProjects(category) {
+    const data = portfolioData[currentLang];
     const projectsGrid = document.getElementById('projects-grid');
     if (!projectsGrid) return;
 
     const filtered = category === 'all' 
-        ? portfolioData.projects 
-        : portfolioData.projects.filter(p => p.category.toLowerCase() === category);
+        ? data.projects.items 
+        : data.projects.items.filter(p => p.category.toLowerCase() === category);
 
     projectsGrid.innerHTML = filtered.map(p => `
         <div class="card fade-in visible" onclick="openProject(${p.id})">
@@ -180,7 +228,8 @@ function setupAnimations() {
 
 // Global functions for modal
 window.openProject = (id) => {
-    const p = portfolioData.projects.find(proj => proj.id === id);
+    const data = portfolioData[currentLang];
+    const p = data.projects.items.find(proj => proj.id === id);
     if (!p) return;
 
     const modal = document.getElementById('project-modal');
@@ -200,8 +249,8 @@ window.openProject = (id) => {
                 ${formatMarkdown(p.details)}
             </div>
             <div style="margin-top: 4rem; display: flex; gap: 1.5rem; flex-wrap: wrap;">
-                 ${p.links.github ? `<a href="${p.links.github}" class="btn" target="_blank">Voir sur GitHub</a>` : ''}
-                 ${p.links.report ? `<a href="${p.links.report}" class="btn" style="background: var(--text-color); color: var(--bg-color)" target="_blank">Consulter le rapport</a>` : ''}
+                 ${p.links.github ? `<a href="${p.links.github}" class="btn" target="_blank">${data.actions.github}</a>` : ''}
+                 ${p.links.report ? `<a href="${p.links.report}" class="btn" style="background: var(--text-color); color: var(--bg-color)" target="_blank">${data.actions.report}</a>` : ''}
             </div>
         </div>
     `;
