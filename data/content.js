@@ -9,9 +9,9 @@ export const portfolioData = {
         },
         identity: {
             name: "ANDRIASAHY Tsikomia Scidelo",
-            title: "Étudiant en deuxième année de cycle d'ingénieur",
+            title: "Étudiant en 2ème année de cycle d'ingénieur - Filière GSEA",
             institution: "Ecole Nationale des Sciences Appliquées de TANGER - ENSAT - Université Abdelmalek Essaâdi",
-            specialties: ["Électronique", "Automatique", "Robotique", "Systèmes et IA Embarqués"],
+            specialties: ["GSEA (Génie des Systèmes Electroniques et Automatiques)", "Électronique", "Automatique", "Robotique", "Systèmes et IA Embarqués"],
             contacts: {
                 email: "scideloandriasahy@gmail.com",
                 linkedin: "www.linkedin.com/in/scidelo",
@@ -50,9 +50,9 @@ Ce projet consiste en l'étude comparative de trois stratégies de contrôle app
 
 ### Méthodologie et Implémentation
 Le modèle dynamique et les contrôleurs ont été développés sous MATLAB/Simulink.
-- **C-MEX S-Functions** : Utilisation de C-MEX pour coder les algorithmes, ce qui a permis d'accélérer drastiquement la vitesse de simulation (x50).
-- **Réseau de Neurones (ANN)** : Conçu avec une architecture récurrente pour imiter le comportement robuste du contrôleur à logique floue.
-- **Optimisation GA-PID** : Les paramètres du PID ont été réglés hors-ligne via un Algorithme Génétique (GA) pour minimiser l'erreur (ISE) tout en pénalisant la consommation d'énergie pour éviter la saturation des actionneurs.
+- C-MEX S-Functions : Utilisation de C-MEX pour coder les algorithmes, ce qui a permis d'accélérer drastiquement la vitesse de simulation (x50).
+- Réseau de Neurones (ANN) : Conçu avec une architecture récurrente pour imiter le comportement robuste du contrôleur à logique floue.
+- Optimisation GA-PID : Les paramètres du PID ont été réglés hors-ligne via un Algorithme Génétique (GA) pour minimiser l'erreur (ISE) tout en pénalisant la consommation d'énergie pour éviter la saturation des actionneurs.
 
 ### Galerie de captures
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 2rem 0;">
@@ -61,6 +61,7 @@ Le modèle dynamique et les contrôleurs ont été développés sous MATLAB/Simu
     <img src="assets/images/captureregleFuzzy.png" alt="Fuzzy Rules" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
     <img src="assets/images/resultatfuzzy.png" alt="Fuzzy Results" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
     <img src="assets/images/resultatPid.png" alt="PID Results" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+    <img src="assets/images/TrajectoryTrackingComparaisonJoint1.png" alt="Trajectory Tracking" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
 </div>
 
 ### Extrait de code de la GA (MATLAB)
@@ -207,9 +208,9 @@ end
         },
         identity: {
             name: "ANDRIASAHY Tsikomia Scidelo",
-            title: "Second-year Engineering Student",
+            title: "2nd-year Engineering Student - GSEA Stream",
             institution: "Ecole Nationale des Sciences Appliquées de TANGER - ENSAT - Abdelmalek Essaâdi University",
-            specialties: ["Electronics", "Automation", "Robotics", "Embedded Systems & AI"],
+            specialties: ["GSEA (Electronic Systems & Automation Engineering)", "Electronics", "Automation", "Robotics", "Embedded Systems & AI"],
             contacts: {
                 email: "scideloandriasahy@gmail.com",
                 linkedin: "www.linkedin.com/in/scidelo",
@@ -259,6 +260,7 @@ The dynamic model and controllers were developed in MATLAB/Simulink.
     <img src="assets/images/captureregleFuzzy.png" alt="Fuzzy Rules" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
     <img src="assets/images/resultatfuzzy.png" alt="Fuzzy Results" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
     <img src="assets/images/resultatPid.png" alt="PID Results" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+    <img src="assets/images/TrajectoryTrackingComparaisonJoint1.png" alt="Trajectory Tracking" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
 </div>
 
 ### GA Code Snippet (MATLAB)
