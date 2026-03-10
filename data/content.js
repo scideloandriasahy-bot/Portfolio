@@ -30,30 +30,75 @@ export const portfolioData = {
             items: [
                 {
                     id: 1,
-                    title: "Contrôle d'un Bras Robotique 2-DOF",
-                    category: "Robotique",
-                    tags: ["Fuzzy Logic", "ANFIS", "MATLAB", "Simulink"],
-                    description: "Conception d'un système de contrôle intelligent pour un bras manipulateur à deux degrés de liberté. Utilisation de la logique floue et d'ANFIS pour optimiser la précision du suivi de trajectoire.",
-                    image: "assets/images/project1.jpg",
+                    title: "Contrôle Intelligent Bras Robotique 2-DOF",
+                    category: "Automatique & Robotique & IA Embarqué",
+                    tags: ["Fuzzy Logic", "Matlab", "Simulink", "Neural Network", "GA", "PID", "C-MEX"],
+                    description: "Analyse comparative et implémentation C-MEX temps réel de contrôleurs Fuzzy, Neural et GA-PID.",
+                    image: "assets/images/brasrobotPH1.png",
                     links: {
                         github: "#",
                         report: "assets/pdfs/report1.pdf"
                     },
                     details: `
-                        ### Objectifs
-                        Le projet visait à surmonter les non-linéarités inhérentes à la dynamique d'un bras 2-DOF.
-                        
-                        ### Méthodologie
-                        - Modélisation dynamique sous Simulink.
-                        - Entraînement de réseaux de neurones flous (ANFIS).
-                        - Comparaison avec un contrôleur PID classique.
-                        
-                        \`\`\`matlab
-                        % Exemple de script MATLAB pour l'initialisation
-                        L1 = 0.5; L2 = 0.4;
-                        q = [pi/4, pi/6];
-                        x = L1*cos(q(1)) + L2*cos(q(1)+q(2));
-                        \`\`\`
+### Résumé du Projet (Abstract)
+Ce projet consiste en l'étude comparative de trois stratégies de contrôle appliquées à un robot planaire à deux degrés de liberté (2-DOF) pour le suivi de trajectoire. L'enjeu principal était de gérer les dynamiques hautement non linéaires tout en respectant les contraintes de calcul des systèmes embarqués.
+
+### Objectifs
+- Assurer un suivi de trajectoire précis face aux couplages articulaires.
+- Comparer les performances de la Logique Floue (FLC), des Réseaux de Neurones Artificiels (ANN) et d'un PID optimisé.
+- Générer un code C hyper-optimisé pour un futur déploiement matériel (comme sur un ESP32).
+
+### Méthodologie et Implémentation
+Le modèle dynamique et les contrôleurs ont été développés sous MATLAB/Simulink.
+- **C-MEX S-Functions** : Utilisation de C-MEX pour coder les algorithmes, ce qui a permis d'accélérer drastiquement la vitesse de simulation (x50).
+- **Réseau de Neurones (ANN)** : Conçu avec une architecture récurrente pour imiter le comportement robuste du contrôleur à logique floue.
+- **Optimisation GA-PID** : Les paramètres du PID ont été réglés hors-ligne via un Algorithme Génétique (GA) pour minimiser l'erreur (ISE) tout en pénalisant la consommation d'énergie pour éviter la saturation des actionneurs.
+
+### Galerie de captures
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 2rem 0;">
+    <img src="assets/images/capturesimulinkTotal.png" alt="Simulink Model" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+    <img src="assets/images/captureFuzzy.png" alt="Fuzzy Controller" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+    <img src="assets/images/captureregleFuzzy.png" alt="Fuzzy Rules" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+    <img src="assets/images/resultatfuzzy.png" alt="Fuzzy Results" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+    <img src="assets/images/resultatPid.png" alt="PID Results" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+</div>
+
+### Extrait de code de la GA (MATLAB)
+\`\`\`matlab
+%% --- 2. INITIALISATION ---
+par = Init(N, npar, range);
+fitness = zeros(N, 1);
+bestfit = [];
+generation = 0;
+terminal = 0;
+stall_count = 0;
+
+fprintf('Démarrage de l''optimisation VERROUILLÉE [0-99.99]...\\n');
+
+%% --- 3. BOUCLE D'ÉVOLUTION ---
+while ~terminal
+    generation = generation + 1;
+    fprintf('Génération %d / %d ... ', generation, max_generation);
+    
+    % --- ÉVALUATION ---
+    for i = 1:N
+        % 1. Affectation des gains dans le Workspace
+        Kp1 = par(i,1); Ki1 = par(i,2); Kd1 = par(i,3);
+        Kp2 = par(i,4); Ki2 = par(i,5); Kd2 = par(i,6);
+        
+        assignin('base', 'Kp1', Kp1); assignin('base', 'Ki1', Ki1); assignin('base', 'Kd1', Kd1);
+        assignin('base', 'Kp2', Kp2); assignin('base', 'Ki2', Ki2); assignin('base', 'Kd2', Kd2);
+        
+        try
+            % 2. Simulation 
+            simOut = sim('GA_PID_2DOF_Sfunction', 'SrcWorkspace', 'current', 'StopTime', '40');
+            % ...
+        catch
+            % ...
+        end
+    end
+end
+\`\`\`
                     `
                 },
                 {
@@ -183,23 +228,75 @@ export const portfolioData = {
             items: [
                 {
                     id: 1,
-                    title: "2-DOF Robotic Arm Control",
-                    category: "Robotics",
-                    tags: ["Fuzzy Logic", "ANFIS", "MATLAB", "Simulink"],
-                    description: "Design of an intelligent control system for a two-degree-of-freedom manipulator arm. Use of fuzzy logic and ANFIS to optimize trajectory tracking accuracy.",
-                    image: "assets/images/project1.jpg",
+                    title: "Intelligent 2-DOF Robotic Arm Control",
+                    category: "Automation & Robotics & Embedded AI",
+                    tags: ["Fuzzy Logic", "Matlab", "Simulink", "Neural Network", "GA", "PID", "C-MEX"],
+                    description: "Comparative analysis and real-time C-MEX implementation of Fuzzy, Neural, and GA-PID controllers.",
+                    image: "assets/images/brasrobotPH1.png",
                     links: {
                         github: "#",
                         report: "assets/pdfs/report1.pdf"
                     },
                     details: `
-                        ### Objectives
-                        The project aimed to overcome non-linearities inherent in 2-DOF arm dynamics.
-                        
-                        ### Methodology
-                        - Dynamic modeling in Simulink.
-                        - Training of fuzzy neural networks (ANFIS).
-                        - Comparison with a classic PID controller.
+### Project Abstract
+This project involves a comparative study of three control strategies applied to a two-degree-of-freedom (2-DOF) planar robot for trajectory tracking. The main challenge was to manage highly non-linear dynamics while respecting the computational constraints of embedded systems.
+
+### Objectives
+- Ensure precise trajectory tracking despite articular couplings.
+- Compare performances of Fuzzy Logic (FLC), Artificial Neural Networks (ANN), and an optimized PID.
+- Generate hyper-optimized C code for future hardware deployment (e.g., on ESP32).
+
+### Methodology and Implementation
+The dynamic model and controllers were developed in MATLAB/Simulink.
+- **C-MEX S-Functions**: Use of C-MEX to code the algorithms, which drastically boosted simulation speed (x50).
+- **Neural Network (ANN)**: Designed with a recurrent architecture to mimic the robust behavior of the fuzzy logic controller.
+- **GA-PID Optimization**: PID parameters were tuned offline via a Genetic Algorithm (GA) to minimize error (ISE) while penalizing energy consumption to avoid actuator saturation.
+
+### Screenshot Gallery
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 15px; margin: 2rem 0;">
+    <img src="assets/images/capturesimulinkTotal.png" alt="Simulink Model" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+    <img src="assets/images/captureFuzzy.png" alt="Fuzzy Controller" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+    <img src="assets/images/captureregleFuzzy.png" alt="Fuzzy Rules" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+    <img src="assets/images/resultatfuzzy.png" alt="Fuzzy Results" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+    <img src="assets/images/resultatPid.png" alt="PID Results" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+</div>
+
+### GA Code Snippet (MATLAB)
+\`\`\`matlab
+%% --- 2. INITIALISATION ---
+par = Init(N, npar, range);
+fitness = zeros(N, 1);
+bestfit = [];
+generation = 0;
+terminal = 0;
+stall_count = 0;
+
+fprintf('Starting LOCKED optimization [0-99.99]...\\n');
+
+%% --- 3. EVOLUTION LOOP ---
+while ~terminal
+    generation = generation + 1;
+    fprintf('Generation %d / %d ... ', generation, max_generation);
+    
+    % --- EVALUATION ---
+    for i = 1:N
+        % 1. Assigning gains to Workspace
+        Kp1 = par(i,1); Ki1 = par(i,2); Kd1 = par(i,3);
+        Kp2 = par(i,4); Ki2 = par(i,5); Kd2 = par(i,6);
+        
+        assignin('base', 'Kp1', Kp1); assignin('base', 'Ki1', Ki1); assignin('base', 'Kd1', Kd1);
+        assignin('base', 'Kp2', Kp2); assignin('base', 'Ki2', Ki2); assignin('base', 'Kd2', Kd2);
+        
+        try
+            % 2. Simulation 
+            simOut = sim('GA_PID_2DOF_Sfunction', 'SrcWorkspace', 'current', 'StopTime', '40');
+            % ...
+        catch
+            % ...
+        end
+    end
+end
+\`\`\`
                     `
                 },
                 {
