@@ -8,7 +8,28 @@ document.addEventListener('DOMContentLoaded', () => {
     renderContent();
     setupFilters();
     setupAnimations();
+    setupBackToTop();
 });
+
+function setupBackToTop() {
+    const backToTop = document.getElementById('back-to-top');
+    if (!backToTop) return;
+
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 400) {
+            backToTop.classList.add('visible');
+        } else {
+            backToTop.classList.remove('visible');
+        }
+    });
+
+    backToTop.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+}
 
 function initTheme() {
     const themeToggle = document.getElementById('theme-toggle');

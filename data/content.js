@@ -10,8 +10,8 @@ export const portfolioData = {
         identity: {
             name: "ANDRIASAHY Tsikomia Scidelo",
             title: "Étudiant en deuxième année de cycle d'ingénieur",
-            institution: "Ecole Normale des Sciences Appliquées de TANGER - ENSAT - Université Abdelmalek Essaâdi",
-            specialties: ["Électronique", "Automatique", "Robotique", "Systèmes Embarqués"],
+            institution: "Ecole Nationale des Sciences Appliquées de TANGER - ENSAT - Université Abdelmalek Essaâdi",
+            specialties: ["Électronique", "Automatique", "Robotique", "Systèmes et IA Embarqués"],
             contacts: {
                 email: "scideloandriasahy@gmail.com",
                 linkedin: "www.linkedin.com/in/scidelo",
@@ -22,7 +22,7 @@ export const portfolioData = {
         },
         about: {
             title: "À propos",
-            text: "Passionné par la modélisation mathématique et l'implémentation sur systèmes matériels. Mon expertise se concentre sur le développement de solutions intelligentes utilisant des microcontrôleurs (familles Arduino, ESP32, PIC) et la puissance des FPGAs. Je m'efforce de combler le fossé entre la théorie algorithmique et l'exécution physique en temps réel."
+            text: "Actuellement étudiant en 2ème année de cycle d'ingénieur à l'ENSA de Tanger, je suis un profil passionné par la conception électronique, l’automatisation, la robotique et l'IA embarquée. Animé par une forte curiosité scientifique et la soif de relever de nouveaux défis technologiques, je me spécialise dans le développement de systèmes embarqués et l'intégration de capteurs. J'ai un attrait particulier pour la modélisation et l'implémentation d'algorithmes de commande avancés et intelligents, tels que les réseaux de neurones, la logique floue ou les algorithmes génétiques (souvent simulés sous MATLAB/Simulink puis codés en C/C++/Python). De nature motivée, polyvalente et débrouillarde, je crois fermement que l'évolution technologique passe par le partage. C'est pourquoi j'exerce comme animateur d'ateliers dans un centre de robotique pour enfants et comme tuteur en sciences appliquées. Ces expériences m'ont permis de forger un excellent esprit d'équipe et de solides capacités de communication, des atouts indispensables pour mener à bien des projets d'ingénierie complexes."
         },
         projects: {
             title: "Projets",
@@ -163,8 +163,8 @@ export const portfolioData = {
         identity: {
             name: "ANDRIASAHY Tsikomia Scidelo",
             title: "Second-year Engineering Student",
-            institution: "Ecole Normale des Sciences Appliquées de TANGER - ENSAT - Abdelmalek Essaâdi University",
-            specialties: ["Electronics", "Automation", "Robotics", "Embedded Systems"],
+            institution: "Ecole Nationale des Sciences Appliquées de TANGER - ENSAT - Abdelmalek Essaâdi University",
+            specialties: ["Electronics", "Automation", "Robotics", "Embedded Systems & AI"],
             contacts: {
                 email: "scideloandriasahy@gmail.com",
                 linkedin: "www.linkedin.com/in/scidelo",
@@ -175,7 +175,7 @@ export const portfolioData = {
         },
         about: {
             title: "About",
-            text: "Passionate about mathematical modeling and hardware implementation. My expertise focuses on developing intelligent solutions using microcontrollers (Arduino, ESP32, PIC families) and the power of FPGAs. I strive to bridge the gap between algorithmic theory and real-time physical execution."
+            text: "Currently a 2nd-year engineering student at ENSA Tanger, I am passionate about electronic design, automation, robotics, and embedded AI. Driven by strong scientific curiosity and a thirst for technological challenges, I specialize in embedded systems development and sensor integration. I have a particular interest in modeling and implementing advanced intelligent control algorithms, such as neural networks, fuzzy logic, or genetic algorithms (often simulated in MATLAB/Simulink and then coded in C/C++/Python). Motivated, versatile, and resourceful, I firmly believe that technological evolution comes through knowledge sharing. That's why I work as a workshop instructor at a children's robotics center and as an applied sciences tutor. These experiences have allowed me to build a strong team spirit and solid communication skills, essential assets for successfully leading complex engineering projects."
         },
         projects: {
             title: "Projects",
