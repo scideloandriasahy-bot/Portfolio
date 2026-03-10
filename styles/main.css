@@ -102,21 +102,25 @@ nav {
 }
 
 .lang-toggle {
-    background: none;
-    border: 1px solid var(--border-color);
-    padding: 0.4rem 0.8rem;
-    border-radius: 10px;
+    background: var(--accent-gradient);
+    border: none;
+    padding: 0.4rem 1rem;
+    border-radius: 12px;
     cursor: pointer;
-    color: var(--text-color);
-    font-weight: 700;
-    font-size: 0.8rem;
+    color: white;
+    font-weight: 800;
+    font-size: 0.85rem;
     transition: var(--transition);
     height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.2);
 }
 
 .lang-toggle:hover {
-    border-color: var(--accent-color);
-    color: var(--accent-color);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(37, 99, 235, 0.3);
 }
 
 .theme-toggle {
