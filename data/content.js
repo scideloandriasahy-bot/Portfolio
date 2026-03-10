@@ -104,32 +104,37 @@ end
                 },
                 {
                     id: 2,
-                    title: "Suiveur Solaire Intelligent",
+                    title: "Conception Complète d'une Bascule JK",
                     category: "Électronique",
-                    tags: ["Arduino", "LDR", "Embedded Systems"],
-                    description: "Système d'orientation automatique de panneaux solaires combinant des capteurs LDR et des algorithmes de positionnement astronomique pour maximiser l'efficacité énergétique.",
-                    image: "assets/images/project2.jpg",
+                    tags: ["Électronique", "Bascule JK", "FSM", "74HC", "Simulation", "Proteus", "Conception Logique"],
+                    description: "Modélisation, synthèse logique, analyse des contraintes électriques et simulation d'une bascule à partir de composants 74HC.",
+                    image: "assets/images/captureBasculeJK.png",
                     links: {
                         github: "#"
                     },
                     details: `
-                        ### Concept
-                        Optimisation du rendement photovoltaïque par un double asservissement.
-                        
-                        ### Matériel utilisé
-                        - Arduino Uno
-                        - Servo-moteurs MG996R
-                        - Capteurs photo-résistifs (LDR)
-                        
-                        \`\`\`cpp
-                        // Lecture des capteurs
-                        int topL = analogRead(ldrTL);
-                        int topR = analogRead(ldrTR);
-                        if (abs(topL - topR) > tolerance) {
-                            pos = (topL > topR) ? pos + 1 : pos - 1;
-                            servoH.write(pos);
-                        }
-                        \`\`\`
+### Résumé du Projet
+Ce projet a été réalisé dans le cadre du module "Conception de Systèmes Électroniques". L'objectif principal était de concevoir une bascule JK de A à Z : de la modélisation théorique jusqu'à la simulation physique en tenant compte des contraintes matérielles réelles.
+
+### Modélisation et Synthèse Logique
+- **Élaboration du schéma bloc** et de la table de vérité fonctionnelle.
+- **Modélisation du système** via une Machine à États Finis (FSM de type Moore).
+- **Synthèse logique** aboutissant à l'équation caractéristique finale : **D = J(Q barre) + (K barre)Q**.
+
+### Analyse des Contraintes Électriques
+- **Analyse rigoureuse des marges de bruit** du circuit.
+- **Calcul de la fréquence maximale** de fonctionnement, estimée à environ **10.5 MHz**.
+- **Évaluation de la consommation de puissance dynamique** en technologie CMOS, calculée à **16 mW** (pour une fréquence de 10 MHz).
+
+### Simulation et Validation
+- **Simulation Logique** : Utilisation d'un modèle idéal avec des portes génériques pour vérifier l'équation booléenne.
+- **Simulation Physique (Proteus)** : Utilisation de modèles de composants réels de la famille CMOS (74HC74, 74HC08, 74HC32) pour valider le comportement face aux contraintes de délais et de seuils de tension.
+
+### Galerie de Simulation
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin: 2rem 0;">
+    <img src="assets/images/simulation2.png" alt="Simulation Logic" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+    <img src="assets/images/simulation3reelle.png" alt="Simulation Real Component" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+</div>
                     `
                 },
                 {
@@ -303,17 +308,37 @@ end
                 },
                 {
                     id: 2,
-                    title: "Smart Solar Tracker",
+                    title: "Complete JK Flip-Flop Design",
                     category: "Electronics",
-                    tags: ["Arduino", "LDR", "Embedded Systems"],
-                    description: "Automatic solar panel orientation system combining LDR sensors and astronomical positioning algorithms to maximize energy efficiency.",
-                    image: "assets/images/project2.jpg",
+                    tags: ["Electronics", "JK Flip-Flop", "FSM", "74HC", "Simulation", "Proteus", "Logic Design"],
+                    description: "Modeling, logical synthesis, electrical constraint analysis, and simulation of a flip-flop using 74HC components.",
+                    image: "assets/images/captureBasculeJK.png",
                     links: {
                         github: "#"
                     },
                     details: `
-                        ### Concept
-                        Optimization of photovoltaic yield through dual feedback control.
+### Project Abstract
+This project was carried out as part of the "Electronic Systems Design" module. The main objective was to design a JK flip-flop from scratch: from theoretical modeling to physical simulation, taking into account real hardware constraints.
+
+### Modeling and Logical Synthesis
+- **Block diagram development** and functional truth table.
+- **System modeling** via a Finite State Machine (Moore-type FSM).
+- **Logical synthesis** resulting in the final characteristic equation: **D = J(Q') + (K')Q**.
+
+### Electrical Constraint Analysis
+- **Rigorous noise margin analysis** of the circuit.
+- **Maximum operating frequency calculation**, estimated at approximately **10.5 MHz**.
+- **Dynamic power consumption evaluation** in CMOS technology, calculated at **16 mW** (for a frequency of 10 MHz).
+
+### Simulation and Validation
+- **Logical Simulation**: Using an ideal model with generic gates to verify the Boolean equation.
+- **Physical Simulation (Proteus)**: Using real CMOS family component models (74HC74, 74HC08, 74HC32) to validate behavior against delay constraints and voltage thresholds.
+
+### Simulation Gallery
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 15px; margin: 2rem 0;">
+    <img src="assets/images/simulation2.png" alt="Logic Simulation" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+    <img src="assets/images/simulation3reelle.png" alt="Real Component Simulation" style="width: 100%; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.1);">
+</div>
                     `
                 },
                 {
