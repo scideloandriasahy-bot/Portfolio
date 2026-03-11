@@ -311,7 +311,7 @@ function formatMarkdown(text) {
 
 // Lightbox logic
 document.addEventListener('click', (e) => {
-    if (e.target.tagName === 'IMG' && (e.target.closest('.project-details-content') || e.target.closest('.card'))) {
+    if (e.target.tagName === 'IMG' && (e.target.closest('.project-details-content') || e.target.closest('.card') || e.target.closest('.hero-image'))) {
         openLightbox(e.target.src);
     }
 });
