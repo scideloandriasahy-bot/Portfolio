@@ -124,6 +124,12 @@ function renderContent() {
         `;
     }
 
+    // Hero Image
+    const heroImage = document.querySelector('#hero-image img');
+    if (heroImage) {
+        heroImage.src = data.identity.image;
+    }
+
     // About
     const aboutText = document.getElementById('about-text');
     if (aboutText) {
