@@ -128,6 +128,7 @@ function renderContent() {
     const heroImage = document.querySelector('#hero-image img');
     if (heroImage) {
         heroImage.src = data.identity.image;
+        heroImage.style.objectPosition = 'top';
     }
 
     // About
