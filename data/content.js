@@ -18,7 +18,7 @@ export const portfolioData = {
                 superprof: "https://www.superprof.ma/Scidelo",
                 phone: "+212 777 647 362"
             },
-            image: "assets/images/profile.jpg"
+            image: "assets/images/photoprofil.jpg"
         },
         about: {
             title: "À propos",
@@ -236,7 +236,7 @@ C'est le cœur du projet. Comparaison entre deux méthodes de développement :
                 superprof: "https://www.superprof.ma/Scidelo",
                 phone: "+212 777 647 362"
             },
-            image: "assets/images/profile.jpg"
+            image: "assets/images/photoprofil.jpg"
         },
         about: {
             title: "About",
