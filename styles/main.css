@@ -387,28 +387,38 @@ section {
 /* Modal Close Button (Fixed to Viewport) */
 .close-modal-fixed {
     position: fixed;
-    top: 2rem;
-    right: 3rem;
-    background: none;
-    border: none;
-    font-size: 3rem;
+    top: 1.5rem;
+    right: 1.5rem;
+    width: 50px;
+    height: 50px;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
     color: white;
+    font-size: 2.2rem;
     cursor: pointer;
-    line-height: 1;
-    z-index: 2500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 0;
+    z-index: 9999;
     transition: var(--transition);
 }
 
 .close-modal-fixed:hover {
-    color: var(--accent-light);
-    transform: scale(1.1);
+    background: var(--accent-color);
+    transform: rotate(90deg) scale(1.1);
+    border-color: transparent;
 }
 
 @media (max-width: 900px) {
     .close-modal-fixed {
         top: 1rem;
-        right: 1.5rem;
-        font-size: 2.5rem;
+        right: 1rem;
+        width: 44px;
+        height: 44px;
+        font-size: 1.8rem;
     }
 }
 

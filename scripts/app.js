@@ -287,8 +287,8 @@ const closeModal = () => {
 
 document.getElementById('close-modal').onclick = closeModal;
 
-document.getElementById('project-modal').addEventListener('click', (e) => {
-    if (e.target.id === 'project-modal') closeModal();
+document.getElementById('modal-scroll-area').addEventListener('click', (e) => {
+    if (e.target.id === 'modal-scroll-area') closeModal();
 });
 
 // Simple pseudo-markdown formatter
