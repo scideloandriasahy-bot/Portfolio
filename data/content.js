@@ -192,7 +192,14 @@ C'est le cœur du projet. Comparaison entre deux méthodes de développement :
         certificates: {
             title: "Certificats",
             items: [
-                { title: "Certification 1", image: "assets/images/cert1.jpg", issuer: "Coursera", date: "2024" }
+                { title: "Certification en cours", image: "assets/images/cert1.jpg", issuer: "En attente", date: "2024" },
+                { 
+                    title: "Chargé Logistique", 
+                    image: "assets/images/cert_logistique.jpg", 
+                    issuer: "TSINGY MAROC", 
+                    date: "2023 - 2024", 
+                    link: "assets/pdfs/CertificatdeReconnaissanceChargéLogistiqueSectionTANGERTSINGYMAROC2023_2024.pdf" 
+                }
             ]
         },
         education: {
@@ -403,7 +410,14 @@ This is the core of the project. A comparison between two development methods:
         certificates: {
             title: "Certificates",
             items: [
-                { title: "Certification 1", image: "assets/images/cert1.jpg", issuer: "Coursera", date: "2024" }
+                { title: "Certification in progress", image: "assets/images/cert1.jpg", issuer: "Pending", date: "2024" },
+                { 
+                    title: "Logistics Officer", 
+                    image: "assets/images/cert_logistique.jpg", 
+                    issuer: "TSINGY MAROC", 
+                    date: "2023 - 2024", 
+                    link: "assets/pdfs/CertificatdeReconnaissanceChargéLogistiqueSectionTANGERTSINGYMAROC2023_2024.pdf" 
+                }
             ]
         },
         education: {

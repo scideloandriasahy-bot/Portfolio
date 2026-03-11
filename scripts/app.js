@@ -167,7 +167,7 @@ function renderContent() {
     const certificatesGrid = document.getElementById('certificates-grid');
     if (certificatesGrid) {
         certificatesGrid.innerHTML = data.certificates.items.map(c => `
-            <div class="card fade-in visible">
+            <${c.link ? `a href="${c.link}" target="_blank"` : 'div'} class="card fade-in visible" style="text-decoration: none; color: inherit;">
                 <div style="height: 180px; background: #f9fafb; display:flex; align-items:center; justify-content:center; padding: 1.5rem;">
                     <img src="${c.image}" alt="${c.title}" style="max-width: 100%; max-height: 100%; filter: grayscale(0.2);" onerror="this.src='https://placehold.co/400x300/eef2ff/6366f1?text=${c.title}'">
                 </div>
@@ -175,7 +175,7 @@ function renderContent() {
                     <h4 class="card-title">${c.title}</h4>
                     <p style="font-size: 0.9rem; color: var(--text-muted); font-weight: 500;">${c.issuer} • ${c.date}</p>
                 </div>
-            </div>
+            </${c.link ? 'a' : 'div'}>
         `).join('');
     }
 }
