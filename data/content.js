@@ -195,7 +195,7 @@ C'est le cœur du projet. Comparaison entre deux méthodes de développement :
                 { title: "Certification en cours", image: "assets/images/cert1.jpg", issuer: "En attente", date: "2024" },
                 { 
                     title: "Chargé Logistique", 
-                    image: "assets/images/CertificatTsingyMaroc.png", 
+                    image: "assets/images/certif_tsingy.png", 
                     issuer: "TSINGY MAROC", 
                     date: "2023 - 2024", 
                     link: "assets/pdfs/CertificatdeReconnaissanceChargéLogistiqueSectionTANGERTSINGYMAROC2023_2024.pdf" 
@@ -413,7 +413,7 @@ This is the core of the project. A comparison between two development methods:
                 { title: "Certification in progress", image: "assets/images/cert1.jpg", issuer: "Pending", date: "2024" },
                 { 
                     title: "Logistics Officer", 
-                    image: "assets/images/CertificatTsingyMaroc.png", 
+                    image: "assets/images/certif_tsingy.png", 
                     issuer: "TSINGY MAROC", 
                     date: "2023 - 2024", 
                     link: "assets/pdfs/CertificatdeReconnaissanceChargéLogistiqueSectionTANGERTSINGYMAROC2023_2024.pdf" 
