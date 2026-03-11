@@ -384,6 +384,34 @@ section {
     .modal-content { padding: 1.5rem; margin-top: 2vh; }
 }
 
+/* Modal Close Button (Fixed to Viewport) */
+.close-modal-fixed {
+    position: fixed;
+    top: 2rem;
+    right: 3rem;
+    background: none;
+    border: none;
+    font-size: 3rem;
+    color: white;
+    cursor: pointer;
+    line-height: 1;
+    z-index: 2500;
+    transition: var(--transition);
+}
+
+.close-modal-fixed:hover {
+    color: var(--accent-light);
+    transform: scale(1.1);
+}
+
+@media (max-width: 900px) {
+    .close-modal-fixed {
+        top: 1rem;
+        right: 1.5rem;
+        font-size: 2.5rem;
+    }
+}
+
 /* Lightbox styles */
 .lightbox {
     position: fixed;

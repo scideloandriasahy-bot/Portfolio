@@ -280,10 +280,16 @@ window.openProject = (id) => {
     document.body.style.overflow = 'hidden';
 };
 
-document.getElementById('close-modal').onclick = () => {
+const closeModal = () => {
     document.getElementById('project-modal').style.display = 'none';
     document.body.style.overflow = 'auto';
 };
+
+document.getElementById('close-modal').onclick = closeModal;
+
+document.getElementById('project-modal').addEventListener('click', (e) => {
+    if (e.target.id === 'project-modal') closeModal();
+});
 
 // Simple pseudo-markdown formatter
 function formatMarkdown(text) {
