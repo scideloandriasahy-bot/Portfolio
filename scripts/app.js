@@ -367,16 +367,54 @@ function formatMarkdown(text) {
 }
 
 // Lightbox logic
+let lightboxImages = [];
+let lightboxCurrentIndex = 0;
+
 document.addEventListener('click', (e) => {
     if (e.target.tagName === 'IMG' && (e.target.closest('.project-details-content') || e.target.closest('.card') || e.target.closest('.hero-image'))) {
-        openLightbox(e.target.src, e.target.dataset.pdf);
+        
+        const gallery = e.target.closest('.cert-gallery');
+        if (gallery) {
+            lightboxImages = Array.from(gallery.querySelectorAll('img'));
+            lightboxCurrentIndex = lightboxImages.indexOf(e.target);
+            updateLightbox();
+        } else {
+            lightboxImages = [e.target];
+            lightboxCurrentIndex = 0;
+            updateLightbox();
+        }
     }
 });
 
-function openLightbox(src, pdfUrl) {
+function updateLightbox() {
+    const img = lightboxImages[lightboxCurrentIndex];
+    if (img) {
+        openLightbox(img.src, img.dataset.pdf, lightboxImages.length > 1);
+    }
+}
+
+document.getElementById('lightbox-prev')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (lightboxImages.length > 1) {
+        lightboxCurrentIndex = (lightboxCurrentIndex - 1 + lightboxImages.length) % lightboxImages.length;
+        updateLightbox();
+    }
+});
+
+document.getElementById('lightbox-next')?.addEventListener('click', (e) => {
+    e.stopPropagation();
+    if (lightboxImages.length > 1) {
+        lightboxCurrentIndex = (lightboxCurrentIndex + 1) % lightboxImages.length;
+        updateLightbox();
+    }
+});
+
+function openLightbox(src, pdfUrl, showNav = false) {
     const lightbox = document.getElementById('lightbox');
     const img = document.getElementById('lightbox-img');
     const actions = document.getElementById('lightbox-actions');
+    const prevBtn = document.getElementById('lightbox-prev');
+    const nextBtn = document.getElementById('lightbox-next');
     
     if (lightbox && img) {
         img.src = src;
@@ -388,6 +426,12 @@ function openLightbox(src, pdfUrl) {
                 actions.innerHTML = '';
             }
         }
+        
+        if (prevBtn && nextBtn) {
+            prevBtn.style.display = showNav ? 'flex' : 'none';
+            nextBtn.style.display = showNav ? 'flex' : 'none';
+        }
+
         lightbox.style.display = 'flex';
         document.body.style.overflow = 'hidden';
     }
@@ -406,28 +450,25 @@ function closeLightbox() {
     if (lightbox) {
         lightbox.style.display = 'none';
         document.body.style.overflow = 'auto';
+        lightboxImages = [];
     }
 }
 
-// Auto-scroll logic for galleries on hover
-document.addEventListener('mouseover', (e) => {
-    const gallery = e.target.closest('.cert-gallery');
-    if (gallery && !gallery.dataset.autoScrollInterval) {
-        gallery.dataset.autoScrollInterval = setInterval(() => {
-            const maxScroll = gallery.scrollWidth - gallery.clientWidth;
-            if (gallery.scrollLeft >= maxScroll - 10) {
-                gallery.scrollTo({ left: 0, behavior: 'smooth' });
-            } else {
-                gallery.scrollBy({ left: gallery.clientWidth, behavior: 'smooth' });
-            }
-        }, 2500); // Dfilement lent pour avoir le temps de cliquer
-    }
-});
+// Auto-scroll logic for galleries (runs continuously slowly)
+setInterval(() => {
+    // Only auto-scroll if lightbox is not open
+    const lightbox = document.getElementById('lightbox');
+    if (lightbox && lightbox.style.display === 'flex') return;
 
-document.addEventListener('mouseout', (e) => {
-    const gallery = e.target.closest('.cert-gallery');
-    if (gallery && (!e.relatedTarget || !gallery.contains(e.relatedTarget))) {
-        clearInterval(parseInt(gallery.dataset.autoScrollInterval));
-        delete gallery.dataset.autoScrollInterval;
-    }
-});
+    document.querySelectorAll('.cert-gallery').forEach(gallery => {
+        // Optional: you can pause when hovering
+        // if (gallery.matches(':hover')) return;
+
+        const maxScroll = gallery.scrollWidth - gallery.clientWidth;
+        if (gallery.scrollLeft >= maxScroll - 10) {
+            gallery.scrollTo({ left: 0, behavior: 'smooth' });
+        } else {
+            gallery.scrollBy({ left: gallery.clientWidth, behavior: 'smooth' });
+        }
+    });
+}, 3500);
