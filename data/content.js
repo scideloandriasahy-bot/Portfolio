@@ -192,13 +192,40 @@ C'est le cœur du projet. Comparaison entre deux méthodes de développement :
         certificates: {
             title: "Certificats",
             items: [
-                { title: "Certification en cours", image: "assets/images/cert1.jpg", issuer: "En attente", date: "2024" },
                 { 
                     title: "Chargé Logistique", 
                     image: "assets/images/certif_tsingy.png", 
                     issuer: "TSINGY MAROC", 
                     date: "2023 - 2024", 
                     link: "assets/pdfs/CertificatdeReconnaissanceChargéLogistiqueSectionTANGERTSINGYMAROC2023_2024.pdf" 
+                },
+                { 
+                    title: "Certificat TSINGY Section Tanger - 1er Mandat", 
+                    image: "assets/images/CertificatTsingyTanger1ereMandat.png", 
+                    issuer: "TSINGY MAROC", 
+                    date: "2024", 
+                    link: "assets/pdfs/CertificatTsingyTanger1ereMandat.pdf" 
+                },
+                { 
+                    title: "Certificat TSINGY Section Tanger - 2ème Mandat", 
+                    image: "assets/images/CertificatTsingyTanger2eMandat.png", 
+                    issuer: "TSINGY MAROC", 
+                    date: "2024", 
+                    link: "assets/pdfs/CertificatTsingyTanger2eMandat.pdf" 
+                },
+                { 
+                    title: "Certificat FITUT", 
+                    image: "assets/images/CertificatFITUT.png", 
+                    issuer: "FITUT", 
+                    date: "2024", 
+                    link: "assets/pdfs/CertificatFITUT.pdf" 
+                },
+                { 
+                    title: "Certificat MATLAB", 
+                    image: "assets/images/CertificatMatlab.png", 
+                    issuer: "MathWorks", 
+                    date: "2024", 
+                    link: "assets/pdfs/CertificatMatlab.pdf" 
                 }
             ]
         },
@@ -410,13 +437,40 @@ This is the core of the project. A comparison between two development methods:
         certificates: {
             title: "Certificates",
             items: [
-                { title: "Certification in progress", image: "assets/images/cert1.jpg", issuer: "Pending", date: "2024" },
                 { 
                     title: "Logistics Officer", 
                     image: "assets/images/certif_tsingy.png", 
                     issuer: "TSINGY MAROC", 
                     date: "2023 - 2024", 
                     link: "assets/pdfs/CertificatdeReconnaissanceChargéLogistiqueSectionTANGERTSINGYMAROC2023_2024.pdf" 
+                },
+                { 
+                    title: "TSINGY Tanger Section Certificate - 1st Mandate", 
+                    image: "assets/images/CertificatTsingyTanger1ereMandat.png", 
+                    issuer: "TSINGY MAROC", 
+                    date: "2024", 
+                    link: "assets/pdfs/CertificatTsingyTanger1ereMandat.pdf" 
+                },
+                { 
+                    title: "TSINGY Tanger Section Certificate - 2nd Mandate", 
+                    image: "assets/images/CertificatTsingyTanger2eMandat.png", 
+                    issuer: "TSINGY MAROC", 
+                    date: "2024", 
+                    link: "assets/pdfs/CertificatTsingyTanger2eMandat.pdf" 
+                },
+                { 
+                    title: "FITUT Certificate", 
+                    image: "assets/images/CertificatFITUT.png", 
+                    issuer: "FITUT", 
+                    date: "2024", 
+                    link: "assets/pdfs/CertificatFITUT.pdf" 
+                },
+                { 
+                    title: "MATLAB Certificate", 
+                    image: "assets/images/CertificatMatlab.png", 
+                    issuer: "MathWorks", 
+                    date: "2024", 
+                    link: "assets/pdfs/CertificatMatlab.pdf" 
                 }
             ]
         },
