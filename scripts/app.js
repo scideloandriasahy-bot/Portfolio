@@ -175,8 +175,8 @@ function renderContent() {
     if (certificatesGrid) {
         certificatesGrid.innerHTML = data.certificates.items.map(c => `
             <${c.link ? `a href="${c.link}" target="_blank"` : 'div'} class="card fade-in visible" style="text-decoration: none; color: inherit;">
-                <div style="height: 180px; background: #f9fafb; display:flex; align-items:center; justify-content:center; padding: 1.5rem;">
-                    <img src="${c.image}" alt="${c.title}" style="max-width: 100%; max-height: 100%; filter: grayscale(0.2);" onerror="this.src='https://placehold.co/400x300/eef2ff/6366f1?text=${c.title}'">
+                <div style="height: 220px; background: #f9fafb; overflow: hidden; position: relative;">
+                    <img src="${c.image}" alt="${c.title}" style="width: 100%; height: 100%; object-fit: cover; transition: var(--transition);" onerror="this.src='https://placehold.co/400x300/eef2ff/6366f1?text=${c.title}'">
                 </div>
                 <div class="card-content">
                     <h4 class="card-title">${c.title}</h4>
