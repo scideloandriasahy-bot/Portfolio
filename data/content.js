@@ -194,7 +194,7 @@ C'est le cœur du projet. Comparaison entre deux méthodes de développement :
             sections: [
                 {
                     title: "Engagements & Soft Skills",
-                    description: "Au-delà de mon parcours scientifique, je suis convaincu que les compétences humaines (soft skills) sont le véritable moteur de la réussite d'un projet. Mon engagement associatif, mes expériences théâtrales et mon goût pour la transmission m'ont permis de forger une grande capacité d'adaptation, un sens aigu de l'organisation et un fort esprit d'équipe.",
+                    description: "Au-delà de mon parcours scientifique, je suis convaincu que les soft skills sont le véritable moteur de la réussite d'un projet. Mon engagement associatif, mes expériences théâtrales et mon goût pour la transmission m'ont permis de forger une grande capacité d'adaptation, un sens aigu de l'organisation et un fort esprit d'équipe.",
                     items: [
                         {
                             title: "Responsable Logistique et Membre du Bureau",
@@ -443,7 +443,7 @@ This is the core of the project. A comparison between two development methods:
             sections: [
                 {
                     title: "Engagements & Soft Skills",
-                    description: "Beyond my scientific background, I am convinced that human skills (soft skills) are the true engine of a project's success. My associative commitment, my theatrical experiences, and my taste for knowledge sharing have allowed me to build strong adaptability, a keen sense of organization, and solid team spirit.",
+                    description: "Beyond my scientific background, I am convinced that soft skills are the true engine of a project's success. My associative commitment, my theatrical experiences, and my taste for knowledge sharing have allowed me to build strong adaptability, a keen sense of organization, and solid team spirit.",
                     items: [
                         {
                             title: "Logistics Manager and Board Member",
