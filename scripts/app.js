@@ -408,3 +408,26 @@ function closeLightbox() {
         document.body.style.overflow = 'auto';
     }
 }
+
+// Auto-scroll logic for galleries on hover
+document.addEventListener('mouseover', (e) => {
+    const gallery = e.target.closest('.cert-gallery');
+    if (gallery && !gallery.dataset.autoScrollInterval) {
+        gallery.dataset.autoScrollInterval = setInterval(() => {
+            const maxScroll = gallery.scrollWidth - gallery.clientWidth;
+            if (gallery.scrollLeft >= maxScroll - 10) {
+                gallery.scrollTo({ left: 0, behavior: 'smooth' });
+            } else {
+                gallery.scrollBy({ left: gallery.clientWidth, behavior: 'smooth' });
+            }
+        }, 2500); // Dfilement lent pour avoir le temps de cliquer
+    }
+});
+
+document.addEventListener('mouseout', (e) => {
+    const gallery = e.target.closest('.cert-gallery');
+    if (gallery && (!e.relatedTarget || !gallery.contains(e.relatedTarget))) {
+        clearInterval(parseInt(gallery.dataset.autoScrollInterval));
+        delete gallery.dataset.autoScrollInterval;
+    }
+});
