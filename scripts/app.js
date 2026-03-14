@@ -180,7 +180,8 @@ function renderContent() {
                 </div>
                 <div class="card-content">
                     <h4 class="card-title">${c.title}</h4>
-                    <p style="font-size: 0.9rem; color: var(--text-muted); font-weight: 500;">${c.issuer} • ${c.date}</p>
+                    <p style="font-size: 0.9rem; color: var(--text-muted); font-weight: 500; margin-bottom: 0.5rem;">${c.issuer} • ${c.date}</p>
+                    ${c.description ? `<p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">${c.description}</p>` : ''}
                 </div>
             </${c.link ? 'a' : 'div'}>
         `).join('');

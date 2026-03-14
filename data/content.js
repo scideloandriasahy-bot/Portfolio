@@ -197,35 +197,40 @@ C'est le cœur du projet. Comparaison entre deux méthodes de développement :
                     image: "assets/images/certif_tsingy.png", 
                     issuer: "TSINGY MAROC", 
                     date: "2023 - 2024", 
-                    link: "assets/pdfs/CertificatdeReconnaissanceChargéLogistiqueSectionTANGERTSINGYMAROC2023_2024.pdf" 
+                    link: "assets/pdfs/CertificatdeReconnaissanceChargéLogistiqueSectionTANGERTSINGYMAROC2023_2024.pdf",
+                    description: "Attestation de dévouement en tant que Chargé de logistique au sein de la section Tanger de l'Association."
                 },
                 { 
-                    title: "Certificat TSINGY Section Tanger - 1er Mandat", 
+                    title: "Membre Actif - 1er Mandat", 
                     image: "assets/images/CertificatTsingyTanger1ereMandat.png", 
                     issuer: "TSINGY MAROC", 
-                    date: "2024", 
-                    link: "assets/pdfs/CertificatTsingyTanger1ereMandat.pdf" 
+                    date: "2023", 
+                    link: "assets/pdfs/CertificatTsingyTanger1ereMandat.pdf",
+                    description: "Certificat de reconnaissance pour l'engagement et la contribution active aux activités de la communauté lors du premier mandat."
                 },
                 { 
-                    title: "Certificat TSINGY Section Tanger - 2ème Mandat", 
+                    title: "Membre Actif - 2ème Mandat", 
                     image: "assets/images/CertificatTsingyTanger2eMandat.png", 
                     issuer: "TSINGY MAROC", 
                     date: "2024", 
-                    link: "assets/pdfs/CertificatTsingyTanger2eMandat.pdf" 
+                    link: "assets/pdfs/CertificatTsingyTanger2eMandat.pdf",
+                    description: "Renouvellement de l'engagement associatif et participation soutenue à l'organisation des événements de l'association."
                 },
                 { 
-                    title: "Certificat FITUT", 
+                    title: "Organisateur FITUT", 
                     image: "assets/images/CertificatFITUT.png", 
                     issuer: "FITUT", 
-                    date: "2024", 
-                    link: "assets/pdfs/CertificatFITUT.pdf" 
+                    date: "2022", 
+                    link: "assets/pdfs/CertificatFITUT.pdf",
+                    description: "Certificat de participation en tant qu'organisateur lors du Festival International du Théâtre Universitaire de Tanger."
                 },
                 { 
-                    title: "Certificat MATLAB", 
+                    title: "Certification MATLAB", 
                     image: "assets/images/CertificatMatlab.png", 
                     issuer: "MathWorks", 
-                    date: "2024", 
-                    link: "assets/pdfs/CertificatMatlab.pdf" 
+                    date: "2025", 
+                    link: "assets/pdfs/CertificatMatlab.pdf",
+                    description: "Validation des compétences fondamentales en programmation, analyse de données et modélisation sous MATLAB."
                 }
             ]
         },
@@ -442,35 +447,40 @@ This is the core of the project. A comparison between two development methods:
                     image: "assets/images/certif_tsingy.png", 
                     issuer: "TSINGY MAROC", 
                     date: "2023 - 2024", 
-                    link: "assets/pdfs/CertificatdeReconnaissanceChargéLogistiqueSectionTANGERTSINGYMAROC2023_2024.pdf" 
+                    link: "assets/pdfs/CertificatdeReconnaissanceChargéLogistiqueSectionTANGERTSINGYMAROC2023_2024.pdf",
+                    description: "Certificate of dedication as Logistics Officer within the Tangier section of the Association."
                 },
                 { 
-                    title: "TSINGY Tanger Section Certificate - 1st Mandate", 
+                    title: "Active Member - 1st Mandate", 
                     image: "assets/images/CertificatTsingyTanger1ereMandat.png", 
                     issuer: "TSINGY MAROC", 
-                    date: "2024", 
-                    link: "assets/pdfs/CertificatTsingyTanger1ereMandat.pdf" 
+                    date: "2023", 
+                    link: "assets/pdfs/CertificatTsingyTanger1ereMandat.pdf",
+                    description: "Certificate of recognition for active engagement and contribution to community activities during the first mandate."
                 },
                 { 
-                    title: "TSINGY Tanger Section Certificate - 2nd Mandate", 
+                    title: "Active Member - 2nd Mandate", 
                     image: "assets/images/CertificatTsingyTanger2eMandat.png", 
                     issuer: "TSINGY MAROC", 
                     date: "2024", 
-                    link: "assets/pdfs/CertificatTsingyTanger2eMandat.pdf" 
+                    link: "assets/pdfs/CertificatTsingyTanger2eMandat.pdf",
+                    description: "Renewal of associative commitment and sustained participation in organizing the association's events."
                 },
                 { 
-                    title: "FITUT Certificate", 
+                    title: "FITUT Organizer", 
                     image: "assets/images/CertificatFITUT.png", 
                     issuer: "FITUT", 
-                    date: "2024", 
-                    link: "assets/pdfs/CertificatFITUT.pdf" 
+                    date: "2022", 
+                    link: "assets/pdfs/CertificatFITUT.pdf",
+                    description: "Certificate of participation as an organizer at the Tangier International University Theatre Festival."
                 },
                 { 
-                    title: "MATLAB Certificate", 
+                    title: "MATLAB Certification", 
                     image: "assets/images/CertificatMatlab.png", 
                     issuer: "MathWorks", 
-                    date: "2024", 
-                    link: "assets/pdfs/CertificatMatlab.pdf" 
+                    date: "2025", 
+                    link: "assets/pdfs/CertificatMatlab.pdf",
+                    description: "Validation of fundamental skills in programming, data analysis, and modeling in MATLAB."
                 }
             ]
         },
