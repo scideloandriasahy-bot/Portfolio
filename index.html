@@ -76,8 +76,8 @@
 
         <section id="certificates" class="container fade-in">
             <h2 class="section-title">Certificats</h2>
-            <div class="grid" id="certificates-grid">
-                <!-- Certificates go here -->
+            <div id="certificates-content">
+                <!-- Certificates sections go here -->
             </div>
         </section>
     </main>
@@ -98,9 +98,9 @@
     <button id="back-to-top" class="back-to-top" aria-label="Back to top">
         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m18 15-6-6-6 6"/></svg>
     </button>
-    <!-- Lightbox for Image Zoom -->
     <div id="lightbox" class="lightbox" style="display:none;">
         <span class="close-lightbox">&times;</span>
+        <div style="position: absolute; bottom: 2rem; display: flex; justify-content: center; width: 100%; z-index: 10001;" id="lightbox-actions"></div>
         <img id="lightbox-img" src="" alt="Zoomed image">
     </div>
 

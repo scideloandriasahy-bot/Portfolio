@@ -190,47 +190,46 @@ C'est le cœur du projet. Comparaison entre deux méthodes de développement :
             ]
         },
         certificates: {
-            title: "Certificats",
-            items: [
-                { 
-                    title: "Chargé Logistique", 
-                    image: "assets/images/certif_tsingy.png", 
-                    issuer: "TSINGY MAROC", 
-                    date: "2023 - 2024", 
-                    link: "assets/pdfs/CertificatdeReconnaissanceChargéLogistiqueSectionTANGERTSINGYMAROC2023_2024.pdf",
-                    description: "Attestation de dévouement en tant que Chargé de logistique au sein de la section Tanger de l'Association."
+            title: "Certificats & Engagements",
+            sections: [
+                {
+                    title: "Engagements & Soft Skills",
+                    description: "Au-delà de mon parcours scientifique, je suis convaincu que les compétences humaines (soft skills) sont le véritable moteur de la réussite d'un projet. Mon engagement associatif, mes expériences théâtrales et mon goût pour la transmission m'ont permis de forger une grande capacité d'adaptation, un sens aigu de l'organisation et un fort esprit d'équipe.",
+                    items: [
+                        {
+                            title: "Responsable Logistique et Membre du Bureau",
+                            issuer: "Association TSINGY MAROC (Section Tanger) / Tsingy Tanger",
+                            date: "2023 - 2025",
+                            description: "Fort d'un engagement associatif de longue durée (deux mandats), j'ai assuré la gestion logistique de l'association locale et représenté la section Tanger au sein de Tsingy Maroc. Ces multiples certificats témoignent d'une fiabilité constante, d'un soutien indéfectible et d'une capacité à gérer des projets sur le terrain en parallèle de mes études.",
+                            skills: ["Gestion des ressources", "Esprit d’initiative", "Résolution de problèmes", "Constance"],
+                            images: ["assets/images/certif_tsingy.png", "assets/images/CertificatTsingyTanger1ereMandat.png", "assets/images/CertificatTsingyTanger2eMandat.png"],
+                            links: ["assets/pdfs/CertificatdeReconnaissanceChargéLogistiqueSectionTANGERTSINGYMAROC2023_2024.pdf", "assets/pdfs/CertificatTsingyTanger1ereMandat.pdf", "assets/pdfs/CertificatTsingyTanger2eMandat.pdf"]
+                        },
+                        {
+                            title: "Représentant Théâtral / Participant au FITUT 2022",
+                            issuer: "FITUT",
+                            date: "2022",
+                            description: "Représentation de mon association Tsingy Tanger lors du FITUT (Festival International du Théâtre Universitaire de Tanger) 2022. Présentation d'une pièce de théâtre ayant suscité l'attention et l'appréciation d'un jury et d'un public internationaux.",
+                            skills: ["Créativité", "Engagement", "Travail d'équipe"],
+                            images: ["assets/images/CertificatFITUT.png"],
+                            links: ["assets/pdfs/CertificatFITUT.pdf"]
+                        }
+                    ]
                 },
-                { 
-                    title: "Membre Actif - 1er Mandat", 
-                    image: "assets/images/CertificatTsingyTanger1ereMandat.png", 
-                    issuer: "TSINGY MAROC", 
-                    date: "2023", 
-                    link: "assets/pdfs/CertificatTsingyTanger1ereMandat.pdf",
-                    description: "Certificat de reconnaissance pour l'engagement et la contribution active aux activités de la communauté lors du premier mandat."
-                },
-                { 
-                    title: "Membre Actif - 2ème Mandat", 
-                    image: "assets/images/CertificatTsingyTanger2eMandat.png", 
-                    issuer: "TSINGY MAROC", 
-                    date: "2024", 
-                    link: "assets/pdfs/CertificatTsingyTanger2eMandat.pdf",
-                    description: "Renouvellement de l'engagement associatif et participation soutenue à l'organisation des événements de l'association."
-                },
-                { 
-                    title: "Organisateur FITUT", 
-                    image: "assets/images/CertificatFITUT.png", 
-                    issuer: "FITUT", 
-                    date: "2022", 
-                    link: "assets/pdfs/CertificatFITUT.pdf",
-                    description: "Certificat de participation en tant qu'organisateur lors du Festival International du Théâtre Universitaire de Tanger."
-                },
-                { 
-                    title: "Certification MATLAB", 
-                    image: "assets/images/CertificatMatlab.png", 
-                    issuer: "MathWorks", 
-                    date: "2025", 
-                    link: "assets/pdfs/CertificatMatlab.pdf",
-                    description: "Validation des compétences fondamentales en programmation, analyse de données et modélisation sous MATLAB."
+                {
+                    title: "Certifications Techniques & Outils",
+                    description: "L'ingénierie moderne exige non seulement une solide compréhension théorique, mais aussi une maîtrise des outils numériques permettant de modéliser, simuler et valider des systèmes complexes. En complément de ma formation académique, je m'investis de manière proactive dans l'apprentissage continu afin d'affiner mes compétences techniques.",
+                    items: [
+                        {
+                            title: "Certification en Modélisation & Simulation (MATLAB/Simulink)",
+                            issuer: "IngénieriePro",
+                            date: "2025",
+                            description: "Formation technique spécialisée axée sur la simulation d'environnements complexes. Cette certification appuie ma capacité à concevoir, modéliser et valider virtuellement des systèmes de contrôle et d'automatisation avant leur implémentation matérielle.",
+                            skills: ["Ingénierie des systèmes", "Automatique", "Prototypage virtuel", "Résolution de problèmes techniques"],
+                            images: ["assets/images/CertificatMatlab.png"],
+                            links: ["assets/pdfs/CertificatMatlab.pdf"]
+                        }
+                    ]
                 }
             ]
         },
@@ -440,47 +439,46 @@ This is the core of the project. A comparison between two development methods:
             ]
         },
         certificates: {
-            title: "Certificates",
-            items: [
-                { 
-                    title: "Logistics Officer", 
-                    image: "assets/images/certif_tsingy.png", 
-                    issuer: "TSINGY MAROC", 
-                    date: "2023 - 2024", 
-                    link: "assets/pdfs/CertificatdeReconnaissanceChargéLogistiqueSectionTANGERTSINGYMAROC2023_2024.pdf",
-                    description: "Certificate of dedication as Logistics Officer within the Tangier section of the Association."
+            title: "Certificates & Engagements",
+            sections: [
+                {
+                    title: "Engagements & Soft Skills",
+                    description: "Beyond my scientific background, I am convinced that human skills (soft skills) are the true engine of a project's success. My associative commitment, my theatrical experiences, and my taste for knowledge sharing have allowed me to build strong adaptability, a keen sense of organization, and solid team spirit.",
+                    items: [
+                        {
+                            title: "Logistics Manager and Board Member",
+                            issuer: "TSINGY MAROC Association (Tangier Section) / Tsingy Tanger",
+                            date: "2023 - 2025",
+                            description: "With a long-term associative commitment (two mandates), I managed the logistics of the local association and represented the Tangier section within Tsingy Maroc. These multiple certificates demonstrate constant reliability, unwavering support, and an ability to manage field projects alongside my studies.",
+                            skills: ["Resource Management", "Initiative", "Problem Solving", "Consistency"],
+                            images: ["assets/images/certif_tsingy.png", "assets/images/CertificatTsingyTanger1ereMandat.png", "assets/images/CertificatTsingyTanger2eMandat.png"],
+                            links: ["assets/pdfs/CertificatdeReconnaissanceChargéLogistiqueSectionTANGERTSINGYMAROC2023_2024.pdf", "assets/pdfs/CertificatTsingyTanger1ereMandat.pdf", "assets/pdfs/CertificatTsingyTanger2eMandat.pdf"]
+                        },
+                        {
+                            title: "Theatrical Representative / FITUT 2022 Participant",
+                            issuer: "FITUT",
+                            date: "2022",
+                            description: "Representing my association Tsingy Tanger at the FITUT (International University Theatre Festival of Tangier) 2022. Performance of a theater play that caught the attention and appreciation of an international jury and audience.",
+                            skills: ["Creativity", "Commitment", "Teamwork"],
+                            images: ["assets/images/CertificatFITUT.png"],
+                            links: ["assets/pdfs/CertificatFITUT.pdf"]
+                        }
+                    ]
                 },
-                { 
-                    title: "Active Member - 1st Mandate", 
-                    image: "assets/images/CertificatTsingyTanger1ereMandat.png", 
-                    issuer: "TSINGY MAROC", 
-                    date: "2023", 
-                    link: "assets/pdfs/CertificatTsingyTanger1ereMandat.pdf",
-                    description: "Certificate of recognition for active engagement and contribution to community activities during the first mandate."
-                },
-                { 
-                    title: "Active Member - 2nd Mandate", 
-                    image: "assets/images/CertificatTsingyTanger2eMandat.png", 
-                    issuer: "TSINGY MAROC", 
-                    date: "2024", 
-                    link: "assets/pdfs/CertificatTsingyTanger2eMandat.pdf",
-                    description: "Renewal of associative commitment and sustained participation in organizing the association's events."
-                },
-                { 
-                    title: "FITUT Organizer", 
-                    image: "assets/images/CertificatFITUT.png", 
-                    issuer: "FITUT", 
-                    date: "2022", 
-                    link: "assets/pdfs/CertificatFITUT.pdf",
-                    description: "Certificate of participation as an organizer at the Tangier International University Theatre Festival."
-                },
-                { 
-                    title: "MATLAB Certification", 
-                    image: "assets/images/CertificatMatlab.png", 
-                    issuer: "MathWorks", 
-                    date: "2025", 
-                    link: "assets/pdfs/CertificatMatlab.pdf",
-                    description: "Validation of fundamental skills in programming, data analysis, and modeling in MATLAB."
+                {
+                    title: "Technical Certifications & Tools",
+                    description: "Modern engineering requires not only a solid theoretical understanding but also mastery of digital tools for modeling, simulating, and validating complex systems. In addition to my academic training, I proactively invest in continuous learning to refine my technical skills.",
+                    items: [
+                        {
+                            title: "Modeling & Simulation Certification (MATLAB/Simulink)",
+                            issuer: "IngénieriePro",
+                            date: "2025",
+                            description: "Specialized technical training focused on simulating complex environments. This certification supports my ability to virtually design, model, and validate control and automation systems before their hardware implementation.",
+                            skills: ["Systems Engineering", "Automation", "Virtual Prototyping", "Technical Problem Solving"],
+                            images: ["assets/images/CertificatMatlab.png"],
+                            links: ["assets/pdfs/CertificatMatlab.pdf"]
+                        }
+                    ]
                 }
             ]
         },

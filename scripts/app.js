@@ -171,21 +171,77 @@ function renderContent() {
     }
 
     // Certificates
-    const certificatesGrid = document.getElementById('certificates-grid');
-    if (certificatesGrid) {
-        certificatesGrid.innerHTML = data.certificates.items.map(c => `
-            <${c.link ? `a href="${c.link}" target="_blank"` : 'div'} class="card fade-in visible" style="text-decoration: none; color: inherit;">
-                <div style="height: 220px; background: #f9fafb; overflow: hidden; position: relative;">
-                    <img src="${c.image}" alt="${c.title}" style="width: 100%; height: 100%; object-fit: cover; transition: var(--transition);" onerror="this.src='https://placehold.co/400x300/eef2ff/6366f1?text=${c.title}'">
+    const certificatesContent = document.getElementById('certificates-content');
+    if (certificatesContent && data.certificates.sections) {
+        certificatesContent.innerHTML = data.certificates.sections.map(section => `
+            <div class="certificate-section fade-in visible" style="margin-bottom: 5rem;">
+                <h3 style="font-size: 1.8rem; margin-bottom: 1.5rem; color: var(--accent-color);">${section.title}</h3>
+                <p style="font-size: 1.1rem; color: var(--text-muted); margin-bottom: 3rem; max-width: 900px; line-height: 1.6;">${section.description}</p>
+                <div class="grid">
+                    ${section.items.map(c => renderCertificateCard(c, data)).join('')}
                 </div>
-                <div class="card-content">
-                    <h4 class="card-title">${c.title}</h4>
-                    <p style="font-size: 0.9rem; color: var(--text-muted); font-weight: 500; margin-bottom: 0.5rem;">${c.issuer} • ${c.date}</p>
-                    ${c.description ? `<p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5;">${c.description}</p>` : ''}
-                </div>
-            </${c.link ? 'a' : 'div'}>
+            </div>
         `).join('');
     }
+}
+
+function renderCertificateCard(c, data) {
+    const hasMultipleImages = c.images && c.images.length > 1;
+    const firstImage = c.images ? c.images[0] : c.image;
+    
+    // We add PDF buttons
+    const btnText = currentLang === 'fr' ? 'Voir le PDF' : 'View PDF';
+    
+    let galleryHtml = '';
+    let pdfBtnHtml = '';
+
+    if (hasMultipleImages) {
+        galleryHtml = `
+            <div class="cert-gallery" style="display: flex; overflow-x: auto; scroll-snap-type: x mandatory; height: 100%; width: 100%; scrollbar-width: none;">
+                ${c.images.map((imgUrl, i) => `
+                    <div style="flex: 0 0 100%; scroll-snap-align: start; position: relative; height: 100%;">
+                        <img src="${imgUrl}" alt="${c.title} - ${i+1}" data-pdf="${c.links[i]}" style="width: 100%; height: 100%; object-fit: cover; transition: var(--transition);" onerror="this.src='https://placehold.co/400x300/eef2ff/6366f1?text=${c.title}'">
+                    </div>
+                `).join('')}
+            </div>
+            <div style="position: absolute; bottom: 10px; left: 0; right: 0; display: flex; justify-content: center; gap: 5px; z-index: 10; pointer-events: none;">
+                ${c.images.map((_, i) => `<div style="width: 8px; height: 8px; border-radius: 50%; background: ${i === 0 ? 'var(--accent-color)' : 'rgba(255,255,255,0.7)'}; box-shadow: 0 0 2px rgba(0,0,0,0.5);"></div>`).join('')}
+            </div>
+            <div style="position: absolute; top: 10px; right: 10px; z-index: 10; pointer-events: none; background: rgba(0,0,0,0.5); padding: 0.2rem 0.6rem; border-radius: 50px; color: white; font-size: 0.75rem;">
+                &harr;
+            </div>
+        `;
+        pdfBtnHtml = `<a href="${c.links[0]}" target="_blank" class="btn pdf-btn" style="padding: 0.5rem 1rem; font-size: 0.85rem; margin-top: auto;">${btnText} 1</a>
+                      <a href="${c.links[1] || '#'}" target="_blank" class="btn pdf-btn" style="padding: 0.5rem 1rem; font-size: 0.85rem; margin-top: auto;">${btnText} 2</a>`;
+        if (c.links && c.links.length > 2) {
+            pdfBtnHtml += `<a href="${c.links[2]}" target="_blank" class="btn pdf-btn" style="padding: 0.5rem 1rem; font-size: 0.85rem; margin-top: auto;">${btnText} 3</a>`;
+        }
+    } else {
+        const linkStr = c.links ? c.links[0] : c.link;
+        galleryHtml = `<img src="${firstImage}" alt="${c.title}" data-pdf="${linkStr}" style="width: 100%; height: 100%; object-fit: cover; transition: var(--transition);" onerror="this.src='https://placehold.co/400x300/eef2ff/6366f1?text=${c.title}'">`;
+        pdfBtnHtml = linkStr ? `<a href="${linkStr}" target="_blank" class="btn pdf-btn" style="padding: 0.5rem 1rem; font-size: 0.85rem; margin-top: auto;">${btnText}</a>` : '';
+    }
+
+    return `
+        <div class="card fade-in visible" style="text-decoration: none; color: inherit; cursor: default; display: flex; flex-direction: column;">
+            <div style="height: 220px; background: #f9fafb; overflow: hidden; position: relative;">
+                ${galleryHtml}
+            </div>
+            <div class="card-content" style="display: flex; flex-direction: column; flex: 1;">
+                <h4 class="card-title">${c.title}</h4>
+                <p style="font-size: 0.9rem; color: var(--text-muted); font-weight: 500; margin-bottom: 0.5rem;">${c.issuer} • ${c.date}</p>
+                ${c.description ? `<p style="font-size: 0.85rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 1rem;">${c.description}</p>` : ''}
+                ${c.skills ? `
+                    <div style="display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1.5rem;">
+                        ${c.skills.map(skill => `<span class="badge" style="font-size: 0.75rem; padding: 0.2rem 0.6rem;">${skill}</span>`).join('')}
+                    </div>
+                ` : ''}
+                <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: auto;">
+                    ${pdfBtnHtml}
+                </div>
+            </div>
+        </div>
+    `;
 }
 
 function setupFilters() {
@@ -313,15 +369,25 @@ function formatMarkdown(text) {
 // Lightbox logic
 document.addEventListener('click', (e) => {
     if (e.target.tagName === 'IMG' && (e.target.closest('.project-details-content') || e.target.closest('.card') || e.target.closest('.hero-image'))) {
-        openLightbox(e.target.src);
+        openLightbox(e.target.src, e.target.dataset.pdf);
     }
 });
 
-function openLightbox(src) {
+function openLightbox(src, pdfUrl) {
     const lightbox = document.getElementById('lightbox');
     const img = document.getElementById('lightbox-img');
+    const actions = document.getElementById('lightbox-actions');
+    
     if (lightbox && img) {
         img.src = src;
+        if (actions) {
+            const btnText = currentLang === 'fr' ? 'Ouvrir le PDF lié' : 'Open related PDF';
+            if (pdfUrl && pdfUrl !== 'undefined') {
+                actions.innerHTML = `<a href="${pdfUrl}" target="_blank" class="btn" style="background: var(--text-color); color: var(--bg-color); box-shadow: 0 10px 25px rgba(0,0,0,0.5); font-size: 1.1rem; padding: 1rem 2.5rem;">${btnText}</a>`;
+            } else {
+                actions.innerHTML = '';
+            }
+        }
         lightbox.style.display = 'flex';
         document.body.style.overflow = 'hidden';
     }
