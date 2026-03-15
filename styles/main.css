@@ -382,7 +382,46 @@ section {
     .hero-image { width: 200px; height: 200px; margin: 0 auto; }
     .hero .tagline { font-size: 1.1rem; }
     .section-title { font-size: 1.8rem; margin-bottom: 2rem; }
-    .nav-links { display: none; }
+    
+    .nav-links { 
+        display: none; 
+        position: absolute;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background-color: var(--nav-bg);
+        backdrop-filter: blur(12px) saturate(180%);
+        border-bottom: 1px solid var(--border-color);
+        flex-direction: column;
+        gap: 0;
+        padding: 1rem 0;
+        text-align: center;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+    .nav-links.active {
+        display: flex;
+    }
+    .nav-links li {
+        width: 100%;
+    }
+    .nav-links a {
+        display: block;
+        padding: 1rem;
+        font-size: 1.1rem;
+    }
+    .mobile-menu-btn {
+        display: flex !important;
+        background: transparent;
+        border: none;
+        color: var(--text-color);
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+        align-items: center;
+        justify-content: center;
+        transition: var(--transition);
+    }
+
     .timeline { padding-left: 2rem; }
     .card-content { padding: 1.25rem; }
     .modal-content { padding: 1.5rem; margin-top: 2vh; }
