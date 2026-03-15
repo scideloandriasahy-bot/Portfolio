@@ -389,14 +389,14 @@ section {
         top: 80px;
         left: 0;
         width: 100%;
-        background-color: var(--nav-bg);
-        backdrop-filter: blur(12px) saturate(180%);
+        background-color: var(--bg-color); /* Utilisation d'une couleur opaque */
         border-bottom: 1px solid var(--border-color);
         flex-direction: column;
         gap: 0;
         padding: 1rem 0;
         text-align: center;
         box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        z-index: 1000;
     }
     .nav-links.active {
         display: flex;
